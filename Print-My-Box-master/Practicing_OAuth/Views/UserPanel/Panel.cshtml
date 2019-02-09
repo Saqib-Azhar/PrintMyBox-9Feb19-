@@ -1,0 +1,151 @@
+﻿@model SportsMania.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Panel";
+    Layout = "~/Views/Shared/_UserPanelLayout.cshtml"; 
+    }
+   
+<head>
+    <title>Sports Mania</title>
+    <link href="/assets1/css/style.css" rel="stylesheet" />
+</head>
+<body style="color:black">
+    <h2>Panel</h2>
+    
+    <!--==========================================================================================================================================================================-->
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Edit Profile</h4>
+            </div>
+            <div class="content">
+@using (Html.BeginForm("Edit", "UserPanel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+                <form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Primary Email</label>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @style = "color:black" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Username</label>
+                                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @style = "color:black" } })
+                                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Backup/Secondary Email</label>
+                                @Html.EditorFor(model => model.BackupEmail, new { htmlAttributes = new { @class = "form-control", @style = "color:black" } })
+                                @Html.ValidationMessageFor(model => model.BackupEmail, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control", @style = "color:black" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control", @style = "color:black" } })
+                                @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                @Html.TextBoxFor(m => m.DateOfBirth,new { @Value = String.Format("{0:yyyy/MM/dd}", Model.DateOfBirth), @class = "form-control", @style = "color:black" })
+                                @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Permanent Address</label>
+                                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", @style = "color:black" } })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Profile Picture</label>
+                                
+                                    <input type="file" id="Images" name="Images" placeholder="Images"/>
+                                    @Html.ValidationMessageFor(model => model.ProfilePicture, "", new { @class = "text-danger" })
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="/Manage/ChangePassword" class="btn btn-info btn-fill pull-left">Change Password</a>
+                    </div>
+                    <div>
+                        <button type="submit" class="btn btn-info btn-fill pull-right" >Update Profile</button>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-user">
+            <div class="image">
+                
+            </div>
+            <div class="content">
+                <div class="author">
+                    <a href="#">
+                        @try
+                        {
+                            var base64 = Convert.ToBase64String(Model.ProfilePicture);
+                            var imgsrc = string.Format("data:image/+productImage.jpg;base64,{0}", base64);
+
+                        <img class="avatar border-gray" src='@imgsrc'/>
+                        }
+                        catch (Exception)
+                        {
+                            if (Model.Gender == "Male")
+                            {
+                                <img src="~/Content/images/boy-512.png" alt="..." class="avatar border-gray" />
+                            }
+                            else if (Model.Gender == "Female")
+                            {
+                                <img src="~/Content/images/images.png" alt="..." class="avatar border-gray" />
+                            }
+                            else
+                            {
+                                <img src="~/Content/images/group-512.png" alt="..." class="avatar border-gray" />
+                            }
+                        }
+                        <h4 class="title">
+                            @Html.DisplayFor(model => model.UserName)<br />
+                            <small>
+                                @Html.DisplayFor(model => model.Gender) <br>
+                            </small>
+                        </h4>
+                    </a>
+                </div>
+                <p class="description text-center">
+                    @Html.Encode(String.Format("{0:dd/MM/yyyy}", Model.DateOfBirth))<br>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                    @Html.DisplayFor(model => model.Email) <br>
+                    @Html.DisplayFor(model => model.Address)<br />
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+</body>

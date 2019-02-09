@@ -1,0 +1,57 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<Practicing_OAuth.Models.Product>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .pagination-container {
+        text-align: center;
+    }
+</style>
+
+<div class="container-fluid">
+    <h1>All Products</h1>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="panel panel-primary">
+                    <div class="panel-body" style="min-height:220px;min-width:285px">
+
+                        <a href="/Products/Details/@item.Id">
+                            <div style="align-content:center">
+                                @if (item.Image1 != null)
+                                {
+                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image1" style="max-height:250px; max-width:225px;" />
+                                }
+                                else if (item.Image2 != null)
+                                {
+                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image2" style="max-height:250px; max-width:225px;" />
+                                }
+                                else if (item.Image3 != null)
+                                {
+                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image3" style="max-height:250px; max-width:225px;" />
+                                }
+                                else if (item.Image4 != null)
+                                {
+                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image4" style="max-height:250px; max-width:225px;" />
+                                }
+                                else if (item.Image5 != null)
+                                {
+                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image5" style="max-height:250px; max-width:225px;" />
+                                }
+                            </div>
+                            <div class="caption" style="text-align:center">
+                                @item.Name
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+    <p style="text-align:center">@Html.PagedListPager(Model, pageNo => Url.Action("productsByCategory", new { ViewBag.Id ,pageNo }))</p>
+</div>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Practicing_OAuth.Models.PriceQuote>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h2>Quote Requests</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                Sender Name
+            </th>
+            <th>
+                Sender Email
+            </th>
+            <th>
+                Contact No.
+            </th>
+            <th>
+                Submitted At
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.UserName == null)
+            {
+                item.UserName = item.Email;
+            }
+            if (item.Seen == true)
+            {
+                <tr>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id">@Html.DisplayFor(modelItem => item.UserName)</a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id">@Html.DisplayFor(modelItem => item.Email)</a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id">@Html.DisplayFor(modelItem => item.PhoneNumber)</a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id">@Html.DisplayFor(modelItem => item.SubmittedTime)</a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/TemporaryDelete/@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id"><b>@Html.DisplayFor(modelItem => item.UserName)</b></a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id"><b>@Html.DisplayFor(modelItem => item.Email)</b></a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id"><b>@Html.DisplayFor(modelItem => item.PhoneNumber)</b></a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/Details/@item.Id"><b>@Html.DisplayFor(modelItem => item.SubmittedTime)</b></a>
+                    </td>
+                    <td>
+                        <a href="/PriceQuotes/TemporaryDelete/@item.Id" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        }
+
+    </table>
+</div>

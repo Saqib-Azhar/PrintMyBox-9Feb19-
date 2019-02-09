@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Practicing_OAuth.Models.ProductsReview>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ReviewerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Review)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </th>
+        <th>
+            @Html.DisplayName("Product Name")
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReviewerName)
+        </td>
+        <td style="width:350px !important">
+            @{
+                if (item.Review.Length > 50)
+                {
+                    item.Review = item.Review.Substring(0, Math.Min(item.Review.Length, 50)) + "...";
+                    @Html.DisplayFor(modelItem => item.Review)
+                }
+                else
+                {
+                    @Html.DisplayFor(modelItem => item.Review)
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedAt)
+        </td>
+        <td>
+            <a href="/Products/Details/@item.Product.Id">@Html.DisplayFor(modelItem => item.Product.Name)</a>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

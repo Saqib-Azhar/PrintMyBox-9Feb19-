@@ -1,0 +1,58 @@
+﻿@model Practicing_OAuth.Models.ContactUsData
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>
+    Contact Record
+</h2>
+
+<table class="table table-responsive table-striped table-bordered">
+    <tr>
+        <td>
+            <b>@Html.DisplayNameFor(model => model.UserName)</b>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.UserName)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>@Html.DisplayNameFor(model => model.Email)</b>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Email)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>@Html.DisplayNameFor(model => model.PhoneNumber)</b>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <b>@Html.DisplayNameFor(model => model.Message)</b>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Message)
+        </td>
+    </tr>
+    
+    <tr>
+        <td>
+            <b>Sent</b>
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.SubmittedTime)
+        </td>
+    </tr>
+</table>
+<p style="text-align:center">
+    <a href="/ContactUsDatas/Index" class="btn btn-primary">Back to List</a>
+    <a href="/ContactUsDatas/TemporaryDelete/@Model.Id" class="btn btn-danger">Delete</a>
+</p>

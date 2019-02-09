@@ -1,0 +1,543 @@
+﻿<!DOCTYPE html>
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>Blog - Print My Box</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet' type='text/css'>
+    <link href="/assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN: BASE PLUGINS  -->
+    <link href="/assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <!-- END: BASE PLUGINS -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="/assets/base/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/base/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="/assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />
+    <link href="/assets/base/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body class="c-layout-header-fixed">
+    <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
+    <!-- BEGIN: HEADER -->
+    <header class="c-layout-header c-layout-header-3 c-layout-header-default-mobile">
+        <div class="c-navbar">
+            <div class="container">
+                <!-- BEGIN: BRAND -->
+                <div class="c-navbar-wrapper clearfix">
+                    <div class="c-brand c-pull-left">
+                        <a href="Index" class="c-logo">
+                            <img src="/assets/base/img/layout/logos/logo-3.png" alt="Print My Box" title="Print My Box" class="c-desktop-logo">
+                            <img src="/assets/base/img/layout/logos/logo-3.png" alt="Print My Box" title="Print My Box" class="c-desktop-logo-inverse">
+                            <img src="/assets/base/img/layout/logos/logo-1.png" alt="Print My Box" title="Print My Box" class="c-mobile-logo">
+                        </a>
+                        <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                            <span class="c-line"></span>
+                            <span class="c-line"></span>
+                            <span class="c-line"></span>
+                        </button>
+                        <button class="c-search-toggler" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <!-- END: BRAND -->
+                    <!-- BEGIN: QUICK SEARCH -->
+                    <form class="c-quick-search" action="/Products/Search">
+                        <input type="text" name="query" placeholder="Type to search..." value="" class="form-control" autocomplete="off">
+                        <span class="c-theme-link">&times;</span>
+                    </form>
+                    <!-- END: QUICK SEARCH -->
+                    <!-- BEGIN: HOR NAV -->
+                    <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
+                    <!-- BEGIN: MEGA MENU -->
+                    @Html.Partial("_MenuPart")
+                    <!-- END: MEGA MENU -->
+                    <!-- END: LAYOUT/HEADERS/MEGA-MENU -->
+                    <!-- END: HOR NAV -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <nav class="c-layout-quick-sidebar">
+        <div class="c-header">
+            <button type="button" class="c-link c-close">
+                <i class="icon-login"></i>
+            </button>
+        </div>
+        <div class="c-content">
+            <div class="c-section">
+                <h3>Theme Colors</h3>
+                <div class="c-settings">
+                    <span class="c-color c-default c-active" data-color="default"></span>
+
+                </div>
+            </div>
+
+        </div>
+    </nav>
+    <!-- END: LAYOUT/SIDEBARS/QUICK-SIDEBAR -->
+    <!-- BEGIN: PAGE CONTAINER -->
+    <div class="c-layout-page">
+        <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+        <div class="c-layout-breadcrumbs-1 c-fonts-uppercase c-fonts-bold c-bordered c-bordered-both">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold">Blog</h3>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        /
+                    </li>
+
+                    <li class="c-state_active">
+                        Blog
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
+        <!-- BEGIN: PAGE CONTENT -->
+        <!-- BEGIN: BLOG LISTING -->
+        <div class="c-content-box c-size-md">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="c-content-blog-post-1-list">
+                            <div class="c-content-blog-post-1">
+                                <div class="c-media">
+                                    <div class="c-content-media-2-slider" data-slider="owl" data-single-item="true" data-auto-play="4000">
+                                        <div class="owl-carousel owl-theme c-theme owl-single">
+                                            <div class="item">
+                                                <div class="c-content-media-2" style="background-image: url(/products/toys-blog.jpg); min-height: 460px;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-title c-font-bold c-font-uppercase">
+                                    <a href="#">Toy Boxes Champion Boxes for Kids</a>
+                                </div>
+                                <div class="c-desc">
+                                    Toys are a standout amongst the most loved things for children and are of various sizes. Presently a days toys begin in assorted kind of custom boxes called toy boxes. The custom toy boxes have a few sorts of preferred standpoint over different boxes. <a href="#">read more...</a>
+                                </div>
+                                <div class="c-panel">
+                                    <div class="c-author">
+                                        <a href="#">By <span class="c-font-uppercase">Abel Reuben</span></a>
+                                    </div>
+                                    <div class="c-date">
+                                        on <span class="c-font-uppercase">April 11, 2017</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="c-content-blog-post-1">
+                                <div class="c-media">
+                                    <div class="c-content-media-2-slider" data-slider="owl" data-single-item="true" data-auto-play="4000">
+                                        <div class="owl-carousel owl-theme c-theme owl-single">
+                                            <div class="item">
+                                                <div class="c-content-media-2" style="background-image: url(/products/tea-box.jpg); min-height: 360px;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-title c-font-bold c-font-uppercase">
+                                    <a href="#">Tea Bag Boxes – Fancy Products for Storing Tea Bags</a>
+                                </div>
+                                <div class="c-desc">
+                                    Tea is the most regularly expended worldwide drink on the planet. Tea Bags are exquisite things which are broadly used on different places and events. Tea Bags are likewise sensitive and favor things. They could be effectively ruined and their names can be stolen. <a href="#">read more...</a>
+                                </div>
+                                <div class="c-panel">
+                                    <div class="c-author">
+                                        <a href="#">By <span class="c-font-uppercase">Batch Charlie</span></a>
+                                    </div>
+                                    <div class="c-date">
+                                        on <span class="c-font-uppercase">April 11, 2017</span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="c-content-blog-post-1">
+                                <div class="c-media">
+                                    <div class="c-content-media-2-slider" data-slider="owl" data-single-item="true" data-auto-play="4000">
+                                        <div class="owl-carousel owl-theme c-theme owl-single">
+                                            <div class="item">
+                                                <div class="c-content-media-2" style="background-image: url(/products/tea-box.jpg); min-height: 360px;">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-title c-font-bold c-font-uppercase">
+                                    <a href="#">Custom Medicine Boxes – Graceful Boxes for Medical Brands</a>
+                                </div>
+                                <div class="c-desc">
+                                    Solution is crucial for human recuperating. There are practically used by everybody in the general public. The prescription are substance items which have corrective powers and are made by hermetical methods. The pharmaceutical are additionally endorsed items, they have reactions moreover. <a href="#">read more...</a>
+                                </div>
+                                <div class="c-panel">
+                                    <div class="c-author">
+                                        <a href="#">By <span class="c-font-uppercase">Batch Charlie</span></a>
+                                    </div>
+                                    <div class="c-date">
+                                        on <span class="c-font-uppercase">April 11, 2017</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <!-- <div class="c-pagination"> -->
+                            <!-- <ul class="c-content-pagination c-theme"> -->
+                            <!-- <li class="c-prev"> -->
+                            <!-- <a href="#"><i class="fa fa-angle-left"></i></a> -->
+                            <!-- </li> -->
+                            <!-- <li> -->
+                            <!-- <a href="#">1</a> -->
+                            <!-- </li> -->
+                            <!-- <li class="c-active"> -->
+                            <!-- <a href="#">2</a> -->
+                            <!-- </li> -->
+                            <!-- <li> -->
+                            <!-- <a href="#">3</a> -->
+                            <!-- </li> -->
+                            <!-- <li> -->
+                            <!-- <a href="#">4</a> -->
+                            <!-- </li> -->
+                            <!-- <li class="c-next"> -->
+                            <!-- <a href="#"><i class="fa fa-angle-right"></i></a> -->
+                            <!-- </li> -->
+                            <!-- </ul> -->
+                            <!-- </div> -->
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <div class="c-content-ver-nav">
+                            <div class="c-content-title-1 c-theme c-title-md">
+                                <h3 class="c-font-bold c-font-uppercase"><a href="cream-boxes.html">Cosmetic Boxes</a></h3>
+                                <div class="c-line-left c-theme-bg">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="c-content-ver-nav">
+                            <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                                <h3 class="c-font-bold c-font-uppercase"><a href="cosmetic-display-boxes.html">DISPLAY PACKAGING</a></h3>
+                                <div class="c-line-left c-theme-bg">
+                                </div>
+                            </div>
+                            <!-- <ul class="c-menu c-arrow-dot c-theme"> -->
+                            <!-- <li><a href="cosmetic-display-boxes.html">Cosmetic Display Boxes</a></li> -->
+                            <!-- <li><a href="display-boxes.html">Display Boxes</a></li> -->
+                            <!-- </ul> -->
+                        </div>
+
+                        <div class="c-content-ver-nav">
+                            <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                                <h3 class="c-font-bold c-font-uppercase"><a href="kraft-boxes.html">Eco Friendly Boxes</a></h3>
+                                <div class="c-line-left c-theme-bg">
+                                </div>
+                            </div>
+                            <!-- <ul class="c-menu c-arrow-dot c-theme"> -->
+                            <!-- <li><a href="http://www.printmybox.com/bux-board-boxes.html">Bux Board Boxes</a></li> -->
+                            <!-- <li><a href="kraft-boxes.html">Kraft Boxes</a></li> -->
+                            <!-- </ul> -->
+                        </div>
+
+                        <div class="c-content-ver-nav">
+                            <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                                <h3 class="c-font-bold c-font-uppercase"><a href="bakery-boxes.html">Food and Beverage</a></h3>
+                                <div class="c-line-left c-theme-bg">
+                                </div>
+                            </div>
+                            <!-- <ul class="c-menu c-arrow-dot c-theme"> -->
+                            <!-- <li><a href="bakery-boxes.html">Bakery Boxes</a></li> -->
+                            <!-- <li><a href="cereal-boxes.html">Cereal Boxes</a></li> -->
+                            <!-- <li><a href="chinese-takeout-boxes.html">Chinese Takeout Boxes</a></li> -->
+                            <!-- <li><a href="coffee-boxes.html">Coffee Boxes</a></li> -->
+                            <!-- <li><a href="donut-boxes.html">Donut Boxes</a></li> -->
+                            <!-- <li><a href="noodle-boxes.html">Noodle Boxes</a></li> -->
+                            <!-- <li><a href="pizza-boxes.html">Pizza Boxes</a></li> -->
+                            <!-- <li><a href="tea-boxes.html">Tea Boxes</a></li> -->
+                            <!-- <li><a href="cake-boxes.html">Cake Boxes</a></li> -->
+                            <!-- <li><a href="chinese-food-boxes.html">Chinese Food Boxes</a></li> -->
+                            <!-- <li><a href="chocolate-boxes.html">Chocolate Boxes</a></li> -->
+                            <!-- <li><a href="cookie-boxes.html">Cookie Boxes</a></li> -->
+                            <!-- <li><a href="macaron-boxes.html">Macaron Boxes</a></li> -->
+                            <!-- <li><a href="pastry-boxes.html">Pastry Boxes</a></li> -->
+                            <!-- <li><a href="popcorn-boxes.html">Popcorn Boxes</a></li> -->
+                            <!-- <li><a href="truffle-boxes.html">Truffle Boxes</a></li> -->
+                            <!-- <li><a href="candy-boxes.html">Candy Boxes</a></li> -->
+                            <!-- <li><a href="cupcake-boxes.html">CupCake Boxes</a></li> -->
+                            <!-- <li><a href="muffin-boxes.html">Muffin Boxes</a></li> -->
+                            <!-- <li><a href="pie-boxes.html">Pie Boxes</a></li> -->
+                            <!-- <li><a href="snack-boxes.html">Snack Boxes</a></li> -->
+                            <!-- <li><a href="wine-boxes.html">Wine Boxes</a></li> -->
+                            <!-- </ul> -->
+                        </div>
+
+                        <div class="c-content-ver-nav">
+                            <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                                <h3 class="c-font-bold c-font-uppercase"><a href="favor-boxes.html">Gift Boxes</a></h3>
+                                <div class="c-line-left c-theme-bg">
+                                </div>
+                            </div>
+                            <!-- <ul class="c-menu c-arrow-dot c-theme"> -->
+                            <!-- <li><a href="favor-boxes.html">Favor Boxes</a></li> -->
+                            <!-- <li><a href="gable-boxes.html">Gable Boxes</a></li> -->
+                            <!-- <li><a href="gift-card-boxes.html">Gift Card Boxes</a></li> -->
+                            <!-- <li><a href="handle-boxes.html">Handle Boxes</a></li> -->
+                            <!-- <li><a href="ornament-boxes.html">Ornament Boxes</a></li> -->
+                            <!-- </ul> -->
+                        </div>
+
+                        <div class="c-content-ver-nav">
+                            <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
+                                <h3 class="c-font-bold c-font-uppercase"><a href="archive-boxes.html">Retail Boxes</a></h3>
+                                <div class="c-line-left c-theme-bg">
+                                </div>
+                                <!-- <div class="c-line-left c-theme-bg"> -->
+                                <!-- </div> -->
+                            </div>
+                            <!-- <ul class="c-menu c-arrow-dot c-theme"> -->
+                            <!-- <li><a href="archive-boxes.html">Archive Boxes</a></li> -->
+                            <!-- <li><a href="candle-boxes.html">Candle Boxes</a></li> -->
+                            <!-- <li><a href="cigarettes-boxes.html">Cigarette Boxes</a></li> -->
+                            <!-- <li><a href="diecut-boxes.html">Die Cut Boxes</a></li> -->
+                            <!-- <li><a href="invitation-boxes.html">Invitation Boxes</a></li> -->
+                            <!-- <li><a href="pillow-boxes.html">Pillow Boxes</a></li> -->
+                            <!-- <li><a href="presentation-boxes.html">Presentation Boxes</a></li> -->
+                            <!-- <li><a href="shirt-boxes.html">Shirt Boxes</a></li> -->
+                            <!-- <li><a href="software-boxes.html">Software Boxes</a></li> -->
+                            <!-- <li><a href="tie-boxes.html">Tie Boxes</a></li> -->
+                            <!-- <li><a href="white-boxes.html">White Boxes</a></li> -->
+                            <!-- <li><a href="book-boxes.html">Book Boxes</a></li> -->
+                            <!-- <li><a href="cardboard-boxes.html">Cardboard Boxes</a></li> -->
+                            <!-- <li><a href="corrugated-boxes.html">Corrugated Boxes</a></li> -->
+                            <!-- <li><a href="folding-boxes.html">Folding Boxes</a></li> -->
+                            <!-- <li><a href="medicine-boxes.html">Medicine Boxes</a></li> -->
+                            <!-- <li><a href="playing-card-boxes.html">Playing Card Boxes</a></li> -->
+                            <!-- <li><a href="product-boxes.html">Product Boxes</a></li> -->
+                            <!-- <li><a href="sleeve-boxes.html">Sleeve Boxes</a></li> -->
+                            <!-- <li><a href="sports-boxes.html">Sports Boxes</a></li> -->
+                            <!-- <li><a href="toy-boxes.html">Toy Boxes</a></li> -->
+                            <!-- <li><a href="window-boxes.html">Windows Boxes</a></li> -->
+                            <!-- <li><a href="business-card-boxes.html">Business Card Boxes</a></li> -->
+                            <!-- <li><a href="cd-dvd-storage-boxes.html">CD/DVD Storage Boxes</a></li> -->
+                            <!-- <li><a href="cube-boxes.html">Cube Boxes</a></li> -->
+                            <!-- <li><a href="game-boxes.html">Game Boxes</a></li> -->
+                            <!-- <li><a href="paper-boxes.html">Paper Boxes</a></li> -->
+                            <!-- <li><a href="postage-boxes.html">Postage Boxes</a></li> -->
+                            <!-- <li><a href="pyramid-boxes.html">Pyramid Boxes</a></li> -->
+                            <!-- <li><a href="soap-boxes.html">Soap Boxes</a></li> -->
+                            <!-- <li><a href="suitcase-boxes.html">Suitcase Boxes</a></li> -->
+                            <!-- <li><a href="wedding-card-boxes.html">Wedding Card Boxes</a></li> -->
+                            <!-- <li><a href="wrap-boxes.html">Wrap Boxes</a></li> -->
+                            <!-- </ul> -->
+                        </div>
+                        <!-- END: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: BLOG LISTING  -->
+        <!-- END: PAGE CONTENT -->
+    </div>
+    <!-- END: PAGE CONTAINER -->
+    <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-5 -->
+    <a name="footer"></a>
+    <footer class="c-layout-footer c-layout-footer-3 c-bg-dark">
+        <div class="c-prefooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="c-container c-first">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold c-font-white">Print My<span class="c-theme-font"> Box</span></h3>
+                                <div class="c-line-left hide">
+                                </div>
+                                <p class="c-text">
+                                    A great resource for Custom Printed Boxes, Custom Printed Box and Custom Boxes. Our Boxes are best in the market with fully customized design.
+                                </p>
+                            </div>
+                            <ul class="c-links">
+                                <li>
+                                    <a href="/Home/Index">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/About">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="cream-box.html">By Indsutries</a>
+                                </li>
+                                <li>
+                                    <a href="one-bottom.html">By Box Style</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Blog">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="terms.html">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Contact">Contact Us</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="c-container">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold c-font-white">Recommended business partners</h3>
+                                <div class="c-line-left hide">
+                                </div>
+                            </div>
+                            <div class="c-blog">
+                                <ul class="c-links">
+                                    <li><a href="http://www.cheapcustomfolders.com/" target="new">Cheap Custom Folders</a></li>
+                                    <li><a href="http://www.customizedpocketfolders.com/" target="new">Customized Pocket Folders</a></li>
+                                    <li><a href="http://www.bumperstickerswholesale.com/" target="_blank">Bumper Stickers Whole Sale</a></li>
+                                    <li><a href="http://www.bumperstickercustom.com/" target="_blank">Bumper Sticker Custom</a></li>
+                                    <li><a href="http://www.customboxpackaging.com/" target="_blank">Custom Box Packaging</a></li>
+                                    <li><a href="http://www.onlineboxprinting.com/" target="_blank">Online Box Printing</a></li>
+
+                                    <li><a href="http://www.printtshirtusa.com/" target="_blank">Print T-Shirt USA</a></li>
+                                    <li><a href="http://www.varietystickers.com/" target="_blank">Variety Stickers</a></li>
+                                    <li><a href="http://www.crmtosales.com/" target="_blank">CRM To Sales</a></li>
+                                    <li><a href="http://www.livechatguru.com/" target="_blank">Live Chat Guru</a></li>
+                                    <li><a href="http://www.ppcseopro.com/" target="_blank">PPC SEO Pro</a></li>
+                                    <li><a href="http://www.premiersolinc.com/" target="_blank">Premier Sol Inc</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="c-container c-last">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold c-font-white">Find us</h3>
+                                <div class="c-line-left hide">
+                                </div>
+
+                            </div>
+                            <ul class="c-socials">
+                                <li>
+                                    <a href="https://www.facebook.com/PrintMyBoxCom" target="new"><i class="icon-social-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-social-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-social-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-social-tumblr"></i></a>
+                                </li>
+                            </ul>
+                            <ul class="c-address">
+                                <li>
+                                    <i class="icon-pointer c-theme-font"></i> 2252 Valencia Dr, Lexington, KY 40513
+                                </li>
+                                <li>
+                                    <i class="icon-call-end c-theme-font"></i> 646-633-4664
+                                </li>
+                                <li>
+                                    <i class="icon-envelope c-theme-font"></i> <a href="mailto:support@printmybox.com" style="color: #818e9a;">support@printmybox.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-container">
+            <ul class="sticky">
+                <li>
+                    <img src="/img/fb.jpg" width="32" height="32">
+                    <p><a href="https://www.facebook.com/PrintMyBoxCom/" target="_blank">Like Us on<br>Facebook</a></p>
+                </li>
+                <li>
+                    <img src="/img/inst.jpg" width="32" height="32">
+                    <p><a href="#" target="_blank">Follow Us on<br>Instagram</a></p>
+                </li>
+                <li>
+                    <img src="/img/qu.jpg" width="32" height="32">
+                    <p><a href="/Home/PriceQuote" target="_blank">Get Custom <br>Quote</a></p>
+                </li>
+
+            </ul>
+        </div>
+        <div class="c-postfooter">
+            <div class="container">
+                <p class="c-font-oswald c-font-14">
+                    Copyright &copy; 2018 <span style="color: #fff;">Print My Box</span>. Powered By: <a href="http://www.premiersolinc.com/" style="color: #fff;">Premier Solutions Inc.</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    </footer>
+    <!-- END: LAYOUT/FOOTERS/FOOTER-5 -->
+    <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+    <!-- END: LAYOUT/FOOTERS/GO2TOP -->
+    <!-- BEGIN: LAYOUT/BASE/BOTTOM -->
+    <!-- BEGIN: CORE PLUGINS -->
+    <!--[if lt IE 9]>
+        <script src="../assets/global/plugins/excanvas.min.js"></script>
+        <![endif]-->
+    <script src="/assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- END: CORE PLUGINS -->
+    <!-- BEGIN: LAYOUT PLUGINS -->
+    <script src="/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <!-- END: LAYOUT PLUGINS -->
+    <!-- BEGIN: THEME SCRIPTS -->
+    <script src="/assets/base/js/components.js" type="text/javascript"></script>
+    <script src="/assets/base/js/app.js" type="text/javascript"></script>
+    <script>
+	$(document).ready(function() {
+		App.init(); // init core
+	});
+    </script>
+    <!-- END: THEME SCRIPTS -->
+    <!-- END: LAYOUT/BASE/BOTTOM -->
+</body>
+</html>

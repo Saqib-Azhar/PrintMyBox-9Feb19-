@@ -1,0 +1,74 @@
+﻿@model Practicing_OAuth.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AspNetUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @try
+        {
+            var base64 = Convert.ToBase64String(Model.ProfilePicture);
+            var imgsrc = string.Format("data:image/+productImage.jpg;base64,{0}", base64);
+            <dd>
+                <img src='@imgsrc' style="max-height:25%;max-width:25%;" class="img-responsive" />
+            </dd>
+        }
+        catch (Exception)
+        {
+            <dd></dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BackupEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BackupEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

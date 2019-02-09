@@ -1,0 +1,64 @@
+﻿@using Practicing_OAuth.Models
+@{
+    Practicing_OAuth.Models.Practicing_OAuthEntities db = new Practicing_OAuthEntities();
+
+    var categoryTypeList = db.CategoryTypes as IEnumerable<Practicing_OAuth.Models.CategoryType>;
+    var categoriesList = db.Categories as IEnumerable<Practicing_OAuth.Models.Category>;
+    var productsList = db.Products as IEnumerable<Practicing_OAuth.Models.Product>;
+}
+
+
+
+
+
+
+
+<nav class="c-mega-menu c-pull-right c-mega-menu-dark c-mega-menu-dark-mobile c-fonts-uppercase c-fonts-bold">
+    <!-- BEGIN: MEGA MENU -->
+    <ul class="nav navbar-nav c-theme-nav">
+        <!-- <li class="c-active c-menu-type-classic"><a href="#" class="c-link dropdown-toggle">Home</a></li> -->
+
+        @foreach (var categoryType in categoryTypeList)
+        {
+            <li class="c-menu-type-classic">
+                @*<a href="/Products/productsByCategoryType/@categoryType.Id" class="c-link dropdown-toggle">@categoryType.CategoryType1</a>*@
+                <a href="#" class="c-link dropdown-toggle">@categoryType.CategoryType1</a>
+                <ul class="dropdown-menu c-menu-type-classic c-pull-left">
+                    @foreach (var category in categoriesList.Where(s => s.CategoryType.Id == categoryType.Id))
+                    {
+                        <li class="dropdown-submenu">
+                            <a href="/Products/productsByCategory/@category.Id">@category.CategoryName</a>
+                            <ul class="dropdown-menu c-pull-right">
+                                @foreach (var product in productsList.Where(s => s.Category.Id == category.Id))
+                                {
+                                    <li><a href="/Products/Details/@product.Id">@product.Name</a></li>
+                                }
+
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+            </li>
+
+        }
+
+
+
+        <li class="c-menu-type-classic"><a href="/Products/AllProducts" class="c-link">Products</a></li>
+        <li class="c-menu-type-classic"><a href="/Home/PriceQuote" class="c-link">Price Quote</a></li>
+        <li class="c-menu-type-classic"><a href="/Home/Blog" class="c-link">Blog</a></li>
+        <li class="c-menu-type-classic"><a href="/Home/About" class="c-link">About Us</a></li>
+        <li class="c-menu-type-classic"><a href="/Home/Contact" class="c-link">Contact Us</a></li>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li class="c-menu-type-classic"><a href="/AdminPanel/Panel" class="c-link">Admin</a></li>
+        }
+        <li class="c-search-toggler-wrapper">
+            <a href="#" class="c-btn-icon c-search-toggler"><i class="fa fa-search"></i></a>
+        </li>
+    </ul>
+    <!-- END MEGA MENU -->
+</nav>
+

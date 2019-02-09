@@ -1,0 +1,121 @@
+﻿@model Practicing_OAuth.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SlugURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SlugURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsEnabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsEnabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image5)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image5)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UploadedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UploadedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

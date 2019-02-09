@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Practicing_OAuth.Models.AspNetUser>
+
+@{
+    ViewBag.Title = "Index";
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+}
+<h2>Users</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BackupEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+
+    <tr>
+    @try
+    {
+        var base64 = Convert.ToBase64String(item.ProfilePicture);
+        var imgsrc = string.Format("data:image/+productImage.jpg;base64,{0}", base64);
+        <td>
+            <img src='@imgsrc' style="max-height:25%;max-width:25%;" class="img-responsive" />
+        </td>
+    }
+    catch (Exception)
+    {
+        <td></td>
+    }
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BackupEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+<hr /><hr />
+@*<div class="col-md-5">
+    <a href="/Account/UserRegister" class="btn btn-info btn-fill pull-right">Add New User</a>
+</div>*@
+<div class="col-md-12">
+    <a href="/Account/AdminRegister" class="btn btn-info btn-fill pull-left">Add New Admin</a>
+</div>

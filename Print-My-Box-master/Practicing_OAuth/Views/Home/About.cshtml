@@ -1,0 +1,577 @@
+﻿<!DOCTYPE html>
+
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+    <meta charset="utf-8" />
+    <title>About Us - Print My Box</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet' type='text/css'>
+    <link href="/assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/animate/animate.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN: BASE PLUGINS  -->
+    <link href="/assets/plugins/cubeportfolio/css/cubeportfolio.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/owl-carousel/owl.carousel.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/owl-carousel/owl.theme.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/owl-carousel/owl.transitions.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/plugins/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css" />
+    <!-- END: BASE PLUGINS -->
+    <!-- BEGIN THEME STYLES -->
+    <link href="/assets/base/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/base/css/components.css" id="style_components" rel="stylesheet" type="text/css" />
+    <link href="/assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />
+    <link href="/assets/base/css/custom.css" rel="stylesheet" type="text/css" />
+    <!-- END THEME STYLES -->
+    <link rel="shortcut icon" href="favicon.ico" />
+</head>
+<body class="c-layout-header-fixed">
+    <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
+    <!-- BEGIN: HEADER -->
+    <header class="c-layout-header c-layout-header-3 c-layout-header-default-mobile">
+        <div class="c-navbar">
+            <div class="container">
+                <!-- BEGIN: BRAND -->
+                <div class="c-navbar-wrapper clearfix">
+                    <div class="c-brand c-pull-left">
+                        <a href="Index" class="c-logo">
+                            <img src="/assets/base/img/layout/logos/logo-3.png" alt="Print My Box" title="Print My Box" class="c-desktop-logo">
+                            <img src="/assets/base/img/layout/logos/logo-3.png" alt="Print My Box" title="Print My Box" class="c-desktop-logo-inverse">
+                            <img src="/assets/base/img/layout/logos/logo-1.png" alt="Print My Box" title="Print My Box" class="c-mobile-logo">
+                        </a>
+                        <button class="c-hor-nav-toggler" type="button" data-target=".c-mega-menu">
+                            <span class="c-line"></span>
+                            <span class="c-line"></span>
+                            <span class="c-line"></span>
+                        </button>
+                        <button class="c-search-toggler" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                    <!-- END: BRAND -->
+                    <!-- BEGIN: QUICK SEARCH -->
+                    <form class="c-quick-search" action="/Products/Search">
+                        <input type="text" name="query" placeholder="Type to search..." value="" class="form-control" autocomplete="off">
+                        <span class="c-theme-link">&times;</span>
+                    </form>
+                    <!-- END: QUICK SEARCH -->
+                    <!-- BEGIN: HOR NAV -->
+                    <!-- BEGIN: LAYOUT/HEADERS/MEGA-MENU -->
+                    <!-- BEGIN: MEGA MENU -->
+                    @Html.Partial("_MenuPart")
+                    <!-- END: MEGA MENU -->
+                    <!-- END: LAYOUT/HEADERS/MEGA-MENU -->
+                    <!-- END: HOR NAV -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- END: HEADER -->
+    <!-- END: LAYOUT/HEADERS/HEADER-1 -->
+    <!-- BEGIN: CONTENT/USER/FORGET-PASSWORD-FORM -->
+    <div class="modal fade c-content-login-form" id="forget-password-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">Password Recovery</h3>
+                    <p>
+                        To recover your password please fill in your email address
+                    </p>
+                    <form>
+                        <div class="form-group">
+                            <label for="forget-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="forget-email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Submit</button>
+                            <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Back To Login</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer c-no-border">
+                    <span class="c-text-account">Don't Have An Account Yet ?</span>
+                    <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/FORGET-PASSWORD-FORM -->
+    <!-- BEGIN: CONTENT/USER/SIGNUP-FORM -->
+    <div class="modal fade c-content-login-form" id="signup-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">Create An Account</h3>
+                    <p>
+                        Please fill in below form to create an account with us
+                    </p>
+                    <form>
+                        <div class="form-group">
+                            <label for="signup-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-username" class="hide">Username</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-username" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-fullname" class="hide">Fullname</label>
+                            <input type="email" class="form-control input-lg c-square" id="signup-fullname" placeholder="Fullname">
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-country" class="hide">Country</label>
+                            <select class="form-control input-lg c-square" id="signup-country">
+                                <option value="1">Country</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Signup</button>
+                            <a href="javascript:;" class="c-btn-forgot" data-toggle="modal" data-target="#login-form" data-dismiss="modal">Back To Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/SIGNUP-FORM -->
+    <!-- BEGIN: CONTENT/USER/LOGIN-FORM -->
+    <div class="modal fade c-content-login-form" id="login-form" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content c-square">
+                <div class="modal-header c-no-border">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <h3 class="c-font-24 c-font-sbold">Good Afternoon!</h3>
+                    <p>
+                        Let's make today a great day!
+                    </p>
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email" class="hide">Email</label>
+                            <input type="email" class="form-control input-lg c-square" id="login-email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password" class="hide">Password</label>
+                            <input type="password" class="form-control input-lg c-square" id="login-password" placeholder="Password">
+                        </div>
+                        <div class="form-group">
+                            <div class="c-checkbox">
+                                <input type="checkbox" id="login-rememberme" class="c-check">
+                                <label for="login-rememberme" class="c-font-thin c-font-17">
+                                    <span></span>
+                                    <span class="check"></span>
+                                    <span class="box"></span>
+                                    Remember Me
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn c-theme-btn btn-md c-btn-uppercase c-btn-bold c-btn-square c-btn-login">Login</button>
+                            <a href="javascript:;" data-toggle="modal" data-target="#forget-password-form" data-dismiss="modal" class="c-btn-forgot">Forgot Your Password ?</a>
+                        </div>
+                        <div class="clearfix">
+                            <div class="c-content-divider c-divider-sm c-icon-bg c-bg-grey c-margin-b-20">
+                                <span style="width: 110px">or signup with</span>
+                            </div>
+                            <ul class="c-content-list-adjusted">
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-twitter">
+                                        <i class="fa fa-twitter"></i>
+                                        Twitter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-facebook">
+                                        <i class="fa fa-facebook"></i>
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="btn btn-block c-btn-square btn-social btn-google">
+                                        <i class="fa fa-google"></i>
+                                        Google
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer c-no-border">
+                    <span class="c-text-account">Don't Have An Account Yet ?</span>
+                    <a href="javascript:;" data-toggle="modal" data-target="#signup-form" data-dismiss="modal" class="btn c-btn-dark-1 btn c-btn-uppercase c-btn-bold c-btn-slim c-btn-border-2x c-btn-square c-btn-signup">Signup!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END: CONTENT/USER/LOGIN-FORM -->
+    <!-- BEGIN: LAYOUT/SIDEBARS/QUICK-SIDEBAR -->
+    <nav class="c-layout-quick-sidebar">
+        <div class="c-header">
+            <button type="button" class="c-link c-close">
+                <i class="icon-login"></i>
+            </button>
+        </div>
+        <div class="c-content">
+            <div class="c-section">
+                <h3>Theme Colors</h3>
+                <div class="c-settings">
+                    <span class="c-color c-default c-active" data-color="default"></span>
+
+                </div>
+            </div>
+            <div class="c-section">
+                <h3>Header Type</h3>
+                <div class="c-settings">
+                    <input type="button" class="c-setting_header-type btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase active" data-value="boxed" value="boxed" />
+                    <input type="button" class="c-setting_header-type btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase" data-value="fluid" value="fluid" />
+                </div>
+            </div>
+            <div class="c-section">
+                <h3>Header Mode</h3>
+                <div class="c-settings">
+                    <input type="button" class="c-setting_header-mode btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase active" data-value="fixed" value="fixed" />
+                    <input type="button" class="c-setting_header-mode btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase" data-value="static" value="static" />
+                </div>
+            </div>
+            <div class="c-section">
+                <h3>Mega Menu Style</h3>
+                <div class="c-settings">
+                    <input type="button" class="c-setting_megamenu-style btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase active" data-value="dark" value="dark" />
+                    <input type="button" class="c-setting_megamenu-style btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase" data-value="light" value="light" />
+                </div>
+            </div>
+            <div class="c-section">
+                <h3>Font Style</h3>
+                <div class="c-settings">
+                    <input type="button" class="c-setting_font-style btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase active" data-value="default" value="default" />
+                    <input type="button" class="c-setting_font-style btn btn-sm c-btn-square c-btn-border-1x c-btn-white c-btn-sbold c-btn-uppercase" data-value="light" value="light" />
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- END: LAYOUT/SIDEBARS/QUICK-SIDEBAR -->
+    <!-- BEGIN: PAGE CONTAINER -->
+    <div class="c-layout-page">
+        <!-- BEGIN: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+        <div class="c-layout-breadcrumbs-1 c-bgimage c-subtitle c-fonts-uppercase c-fonts-bold c-bg-img-center" style="background-image: url(/assets/base/img/content/backgrounds/bg-28.jpg)">
+            <div class="container">
+                <div class="c-page-title c-pull-left">
+                    <h3 class="c-font-uppercase c-font-bold c-font-white c-font-20 c-font-slim">About Us</h3>
+                    <h4 class="c-font-white c-font-thin c-opacity-07">
+                        Premier Solutions Inc. is a pioneer in the field of marketing products.
+                    </h4>
+                </div>
+                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+                    <li>
+                        <a href="#" class="c-font-white">Home</a>
+                    </li>
+                    <li class="c-font-white">
+                        /
+                    </li>
+                    <li class="c-state_active c-font-white">
+                        About Us
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-3 -->
+        <!-- BEGIN: PAGE CONTENT -->
+        <!-- BEGIN: CONTENT/MISC/LATEST-ITEMS-3 -->
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- Begin: Title 1 component -->
+                        <div class="c-content-title-1">
+                            <h3 class="c-font-uppercase c-font-bold">About us</h3>
+                            <div class="c-line-left c-theme-bg">
+                            </div>
+                        </div>
+                        <!-- End-->
+                        <p>
+                            Premier Solutions Inc. is a pioneer in the field of marketing products. We offer all kinds of custom printed items, from boxes to letterheads, from folders to stickers, from business cards to banners and absolutely anything you can think of that falls under the category of customized printing. Our aim is to cater to businesses of all sizes, from start-ups to multinationals, and help them market their products effectively. Everything is tailor-made and ordered to meet the individual demand of each customer; from the size and the style, to the printing and quantity we offer flexibility and high-quality coupled with competitive prices. In addition to custom printing we offer SEO and online marketing services as well. We help our clients promote their company and products in a more efficient way by conducting a full analysis of the current situation of the company and its online presence and coming up with strategies to overcome the problems which are preventing a company from growing in size. Basically we are a one-stop shop for all your marketing needs.
+                        </p>
+                        <p>We at www.printmybox.com consider packaging to more than simply a means to encase products. We have taken it to a whole new level by introducing customized design. This enables our customers to develop their own designs and create tailored boxes that represent their brand as well as their products. Selecting your own size, design, finish etc gives the customers the power to choose each and every single aspect of the box’s design themselves.</p>
+                        <p>Mr. Mian the CEO of Premier Solutions Inc. started the company some 15 years back with a vision of offering customized packaging to businesses. Since packaging is an integral part of marketing nowadays with companies constantly trying to push forward and gain customers’ attention. The focus initially was on start-up businesses which remains the core of our company to this day. It is easy for big companies to get customized boxes at low rates due to their bulk orders, but firms that are just starting up have very few options with fewer means of funds and lack of bulk discounts. Mr. Mian set up the company to specifically help out start-ups by offering a minimum order quantity of a mere 100 boxes. To this day the tradition of a helpful service and special discounts to start-ups is maintained.</p>
+                        <p>At www.printmybox.com we completely stream line the process of placing a custom order making it hassle free. Our helpful customer representatives will guide you through the entire process from the initial phase of getting a custom quote to the final phase of getting a proof which leads to approval and payment for the order.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- END: CONTENT/MISC/LATEST-ITEMS-3 -->
+        <!-- BEGIN: CONTENT/MISC/SERVICES-2 -->
+        <div class="c-content-box c-size-md c-bg-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="c-content-title-1 c-margin-b-60">
+                            <h3 class="c-center c-font-uppercase c-font-bold">
+                                Steps Involved In Placing The Order
+                            </h3>
+                            <div class="c-line-center">
+                            </div>
+                            <p class="c-center c-font-uppercase c-font-17">
+                                JUST THREE SIMPLE STEPS IN ORDER TO ACHIEVE THE PACKAGING OF YOUR DREAMS
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="c-content-step-1 c-opt-1">
+                            <div class="c-icon">
+                                <span class="c-hr c-hr-first"><span class="c-content-line-icon c-icon-16 c-theme"></span></span>
+                            </div>
+
+                            <div class="c-description c-font-17">
+                                Customer provides the specifications for the boxes they are looking for while we provide the price quotes accordingly.
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="c-content-step-1 c-opt-1">
+                            <div class="c-icon">
+                                <span class="c-hr"><span class="c-content-line-icon c-icon-42 c-theme"></span></span>
+                            </div>
+
+                            <div class="c-description c-font-17">
+                                Customer provides the artwork or design instructions and our team of designers create a digital proof to represent the final version of the box.
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="c-content-step-1 c-opt-1">
+                            <div class="c-icon">
+                                <span class="c-hr c-hr-last"><span class="c-content-line-icon c-icon-46 c-theme"></span></span>
+                            </div>
+
+                            <div class="c-description c-font-17">
+                                Once the digital proof is approved the customer pays as per the invoice and the production begins!
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- END: CONTENT/MISC/ABOUT-1 -->
+        <!-- BEGIN: CONTENT/SLIDERS/TESTIMONIALS-2 -->
+        <!-- END: CONTENT/SLIDERS/TESTIMONIALS-2 -->
+        <!-- END: PAGE CONTENT -->
+    </div>
+    <!-- END: PAGE CONTAINER -->
+    <!-- BEGIN: LAYOUT/FOOTERS/FOOTER-5 -->
+    <a name="footer"></a>
+    <footer class="c-layout-footer c-layout-footer-3 c-bg-dark">
+        <div class="c-prefooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="c-container c-first">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold c-font-white">Print My<span class="c-theme-font"> Box</span></h3>
+                                <div class="c-line-left hide">
+                                </div>
+                                <p class="c-text">
+                                    A great resource for Custom Printed Boxes, Custom Printed Box and Custom Boxes. Our Boxes are best in the market with fully customized design.
+                                </p>
+                            </div>
+                            <ul class="c-links">
+                                <li>
+                                    <a href="/Home/Index">Home</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/About">About Us</a>
+                                </li>
+                                <li>
+                                    <a href="cream-box.html">By Indsutries</a>
+                                </li>
+                                <li>
+                                    <a href="one-bottom.html">By Box Style</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Blog">Blog</a>
+                                </li>
+                                <li>
+                                    <a href="terms.html">Terms</a>
+                                </li>
+                                <li>
+                                    <a href="/Home/Contact">Contact Us</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="c-container">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold c-font-white">Recommended business partners</h3>
+                                <div class="c-line-left hide">
+                                </div>
+                            </div>
+                            <div class="c-blog">
+                                <ul class="c-links">
+                                    <li><a href="http://www.cheapcustomfolders.com/" target="new">Cheap Custom Folders</a></li>
+                                    <li><a href="http://www.customizedpocketfolders.com/" target="new">Customized Pocket Folders</a></li>
+                                    <li><a href="http://www.bumperstickerswholesale.com/" target="_blank">Bumper Stickers Whole Sale</a></li>
+                                    <li><a href="http://www.bumperstickercustom.com/" target="_blank">Bumper Sticker Custom</a></li>
+                                    <li><a href="http://www.customboxpackaging.com/" target="_blank">Custom Box Packaging</a></li>
+                                    <li><a href="http://www.onlineboxprinting.com/" target="_blank">Online Box Printing</a></li>
+
+                                    <li><a href="http://www.printtshirtusa.com/" target="_blank">Print T-Shirt USA</a></li>
+                                    <li><a href="http://www.varietystickers.com/" target="_blank">Variety Stickers</a></li>
+                                    <li><a href="http://www.crmtosales.com/" target="_blank">CRM To Sales</a></li>
+                                    <li><a href="http://www.livechatguru.com/" target="_blank">Live Chat Guru</a></li>
+                                    <li><a href="http://www.ppcseopro.com/" target="_blank">PPC SEO Pro</a></li>
+                                    <li><a href="http://www.premiersolinc.com/" target="_blank">Premier Sol Inc</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="c-container c-last">
+                            <div class="c-content-title-1">
+                                <h3 class="c-font-uppercase c-font-bold c-font-white">Find us</h3>
+                                <div class="c-line-left hide">
+                                </div>
+
+                            </div>
+                            <ul class="c-socials">
+                                <li>
+                                    <a href="https://www.facebook.com/PrintMyBoxCom" target="new"><i class="icon-social-facebook"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-social-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-social-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-social-tumblr"></i></a>
+                                </li>
+                            </ul>
+                            <ul class="c-address">
+                                <li>
+                                    <i class="icon-pointer c-theme-font"></i> 2252 Valencia Dr, Lexington, KY 40513
+                                </li>
+                                <li>
+                                    <i class="icon-call-end c-theme-font"></i> 646-633-4664
+                                </li>
+                                <li>
+                                    <i class="icon-envelope c-theme-font"></i> <a href="mailto:support@printmybox.com" style="color: #818e9a;">support@printmybox.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sticky-container">
+            <ul class="sticky">
+                <li>
+                    <img src="/img/fb.jpg" width="32" height="32">
+                    <p><a href="https://www.facebook.com/PrintMyBoxCom/" target="_blank">Like Us on<br>Facebook</a></p>
+                </li>
+                <li>
+                    <img src="/img/inst.jpg" width="32" height="32">
+                    <p><a href="#" target="_blank">Follow Us on<br>Instagram</a></p>
+                </li>
+                <li>
+                    <img src="/img/qu.jpg" width="32" height="32">
+                    <p><a href="/Home/PriceQuote" target="_blank">Get Custom <br>Quote</a></p>
+                </li>
+
+            </ul>
+        </div>
+        <div class="c-postfooter">
+            <div class="container">
+                <p class="c-font-oswald c-font-14">
+                    Copyright &copy; 2018 <span style="color: #fff;">Print My Box</span>. Powered By: <a href="http://www.premiersolinc.com/" style="color: #fff;">Premier Solutions Inc.</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+    </footer>
+    <!-- END: LAYOUT/FOOTERS/FOOTER-5 -->
+    <!-- BEGIN: LAYOUT/FOOTERS/GO2TOP -->
+    <div class="c-layout-go2top">
+        <i class="icon-arrow-up"></i>
+    </div>
+    <!-- END: LAYOUT/FOOTERS/GO2TOP -->
+    <!-- BEGIN: LAYOUT/BASE/BOTTOM -->
+    <!-- BEGIN: CORE PLUGINS -->
+    <!--[if lt IE 9]>
+        <script src="../assets/global/plugins/excanvas.min.js"></script>
+        <![endif]-->
+    <script src="/assets/plugins/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/jquery-migrate.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- END: CORE PLUGINS -->
+    <!-- BEGIN: LAYOUT PLUGINS -->
+    <script src="/assets/plugins/cubeportfolio/js/jquery.cubeportfolio.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/counterup/jquery.waypoints.min.js" type="text/javascript"></script>
+    <script src="/assets/plugins/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <!-- END: LAYOUT PLUGINS -->
+    <!-- BEGIN: THEME SCRIPTS -->
+    <script src="/assets/base/js/components.js" type="text/javascript"></script>
+    <script src="/assets/base/js/app.js" type="text/javascript"></script>
+    <script>
+	$(document).ready(function() {
+		App.init(); // init core
+	});
+    </script>
+    <!-- END: THEME SCRIPTS -->
+    <!-- END: LAYOUT/BASE/BOTTOM -->
+
+
+    @*<script src="/LCSK/assets/js/jquery-2.1.1.min.js"></script>
+    <script src="/LCSK/assets/js/bootstrap.min.js"></script>
+
+    <script src="/LCSK/assets/js/jquery.timeago.js" type="text/javascript"></script>
+
+    <script src="/LCSK/assets/js/jquery.signalR-2.1.1.min.js" type="text/javascript"></script>
+    <script src="/signalr/hubs" type="text/javascript"></script>
+    <script src="/LCSK/install.js" type="text/javascript"></script>
+    <script src="~/LCSK/chat.js"></script>*@
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5b6a9033e21878736ba2ba15/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>
