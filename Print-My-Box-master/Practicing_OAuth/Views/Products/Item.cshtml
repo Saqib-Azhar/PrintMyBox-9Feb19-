@@ -45,6 +45,7 @@
     <link href="/assets/base/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
+    @Html.Action("_JsonLdPartial", "Home")
 </head>
 <body class="c-layout-header-fixed">
     <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
@@ -529,7 +530,7 @@
                                                                             <div class="col-md-4">
                                                                                 @for (int a = 0; a < item.Rating; a++)
                                                                                 {
-                                                                                    <span class="fa fa-star-o"></span>
+                                                                                    <span class="fa fa-star"></span>
                                                                                 }
                                                                             </div>
                                                                             <div class="col-md-4" style="text-align:right">
@@ -542,6 +543,29 @@
                                                                     </div>
                                                                 </div>
                                                             }
+                                                            <div class="panel">
+                                                                <div class="panel-heading">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <b>Reviewer: </b>Stive
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                            <span class="fa fa-star"></span>
+                                                                        </div>
+                                                                        <div class="col-md-4" style="text-align:right">
+                                                                            <b style="text-align:right">6/28/2018 10:58:56 AM</b>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><hr />
+                                                                <div class="panel-body">
+                                                                    <b>Review: </b>We needed a large number of boxes for our line of foundations in weeks’ time and the people at www.printmbyox.com really delivered after our usual vendor failed to come through. The quality of the boxes was also superior and we have since switched to them for our regular order of boxes. Great job guys!
+                                                                </div>
+                                                            </div>
+
                                                             <br />
                                                             <hr />
                                                             <br />

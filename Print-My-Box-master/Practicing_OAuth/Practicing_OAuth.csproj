@@ -1619,6 +1619,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\ChatIntegrated2Oct.pubxml" />
     <None Include="Properties\PublishProfiles\ChatIntegrated3sept.pubxml" />
+    <None Include="Properties\PublishProfiles\PrintMyBox9Feb.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
