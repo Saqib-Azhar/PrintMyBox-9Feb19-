@@ -41,22 +41,22 @@ namespace Practicing_OAuth.Controllers
 
         public ActionResult Contact()
         {
-            return View();
+            return RedirectToAction("ContactView", "Contact");
         }
 
         public ActionResult Blog()
         {
-            return View();
+            return RedirectToAction("BlogView", "Blog");
         }
 
         public ActionResult About()
         {
-            return View();
+            return RedirectToAction("AboutView", "About");
         }
 
         public ActionResult PriceQuote()
         {
-            return View();
+            return RedirectToAction("PriceQuoteView", "PriceQuote");
         }
         public ActionResult ContactDetails(FormCollection contactDetails)
         {

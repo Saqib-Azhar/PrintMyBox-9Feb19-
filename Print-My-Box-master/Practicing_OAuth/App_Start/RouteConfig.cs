@@ -14,6 +14,26 @@ namespace Practicing_OAuth
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Blog",
+                url: "Blog",
+                defaults: new { controller = "Blog", action = "BlogView", url = 1 }
+            );
+            routes.MapRoute(
+                name: "About",
+                url: "About",
+                defaults: new { controller = "About", action = "AboutView", url = 1, url2 = 1 }
+            );
+            routes.MapRoute(
+                name: "PriceQuote",
+                url: "PriceQuote",
+                defaults: new { controller = "PriceQuote", action = "PriceQuoteViewPriceQuoteView", url = 1, url2 = 1, url3 = 1 }
+            );
+            routes.MapRoute(
+                name: "Contact",
+                url: "Contact",
+                defaults: new { controller = "Contact", action = "ContactView", url1 = 1, url2 = 1, url3 = 1, url4 = 1 }
+            );
+            routes.MapRoute(
                 name: "Home",
                 url: "Index",
                 defaults: new { controller = "Home", action = "IndexView" }

@@ -241,15 +241,19 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminPanelController.cs" />
     <Compile Include="Controllers\AspNetUsersController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\CategoryTypesController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContactUsDatasController.cs" />
     <Compile Include="Controllers\DataCrawlerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PriceQuoteController.cs" />
     <Compile Include="Controllers\PriceQuotesController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProductsReviewsController.cs" />
@@ -1721,6 +1725,7 @@
     <Content Include="Views\ProductsReviews\Index.cshtml" />
     <Content Include="Views\ProductsReviews\_ViewStart.cshtml" />
     <Content Include="Views\Home\_JsonLdPartial.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\AdminAssets\assets1\" />
@@ -1736,6 +1741,9 @@
     <Folder Include="assets\base\img\content\misc\" />
     <Folder Include="sass\components\content\persons\" />
     <Folder Include="UploadedProductImages\" />
+    <Folder Include="Views\About\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\PriceQuote\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
