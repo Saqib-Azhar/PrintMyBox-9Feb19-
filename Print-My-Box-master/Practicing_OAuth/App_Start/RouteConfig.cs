@@ -26,7 +26,7 @@ namespace Practicing_OAuth
             routes.MapRoute(
                 name: "PriceQuote",
                 url: "PriceQuote",
-                defaults: new { controller = "PriceQuote", action = "PriceQuoteViewPriceQuoteView", url = 1, url2 = 1, url3 = 1 }
+                defaults: new { controller = "PriceQuote", action = "PriceQuoteView", url = 1, url2 = 1, url3 = 1 }
             );
             routes.MapRoute(
                 name: "Contact",
