@@ -45,7 +45,7 @@
     <link href="/assets/base/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
-    @Html.Action("_JsonLdPartial", "Home")
+	@Html.Action("_JsonLdPartial", "Home")
 </head>
 <body class="c-layout-header-fixed">
     <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
@@ -116,7 +116,8 @@
                 <div class="c-page-title c-pull-left">
                     <h3 class="c-font-uppercase c-font-bold" id="Product-Name">@Model.Name</h3>
                 </div>
-                <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
+					<!--
+			   <ul class="c-page-breadcrumbs c-theme-nav c-pull-right c-fonts-regular">
                     <li>
                         <a href="/Products/productsByCategories/@Model.Category.CategoryType.Id">@Model.Category.CategoryType.CategoryType1</a>
                     </li>
@@ -133,6 +134,7 @@
                         <a href="/Products/Details/@Model.Id">@Model.Name</a>
                     </li>
                 </ul>
+				<--
             </div>
         </div>
         <!-- END: LAYOUT/BREADCRUMBS/BREADCRUMBS-1 -->
@@ -149,7 +151,7 @@
                         {
                             <div class="c-content-ver-nav">
                                 <div class="c-content-title-1 c-theme c-title-md c-margin-t-40">
-                                    <h3 class="c-font-bold c-font-uppercase">Showcase Exhibition</h3>
+                                    <h3 class="c-font-bold c-font-uppercase">Products</h3>
                                     <div class="c-line-left c-theme-bg">
                                     </div>
                                 </div>
@@ -629,19 +631,10 @@
                                     <a href="/index">Home</a>
                                 </li>
                                 <li>
-                                    <a href="/about-us">About Us</a>
+                                    <a href="/Home/About">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="/cream-box.html">By Indsutries</a>
-                                </li>
-                                <li>
-                                    <a href="/one-bottom.html">By Box Style</a>
-                                </li>
-                                <li>
-                                    <a href="/blog.html">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="/terms.html">Terms</a>
+                                    <a href="/Home/Blog">Blog</a>
                                 </li>
                                 <li>
                                     <a href="/Home/Contact">Contact Us</a>
@@ -689,14 +682,23 @@
                                 <li>
                                     <a href="https://www.facebook.com/PrintMyBoxCom" target="new"><i class="icon-social-facebook"></i></a>
                                 </li>
-                                <li>
-                                    <a href="#"><i class="icon-social-twitter"></i></a>
+								<li>
+                                    <a href="https://www.instagram.com/printmyboxcom/" target="new"><i class="fa fa-instagram"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-social-youtube"></i></a>
+                                    <a href="https://twitter.com/printmyboxcom" target="new"><i class="icon-social-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-social-tumblr"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCP8o8UkQr7rToqw4Ee5ZwFQ/videos"  target="new"><i class="icon-social-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.pinterest.com/PrintMyBox/" target="new"><i class="fa fa-pinterest"></i></a>
+                                </li>
+								<li>
+                                    <a href="https://www.linkedin.com/company/printmybox/" target="new"><i class="fa fa-linkedin"></i></a>
+                                </li>
+								<li>
+                                    <a href="https://www.flickr.com/photos/128471729@N04/" target="new"><i class="fa fa-flickr"></i></a>
                                 </li>
                             </ul>
                             <ul class="c-address">
@@ -704,10 +706,10 @@
                                     <i class="icon-pointer c-theme-font"></i> 2252 Valencia Dr, Lexington, KY 40513
                                 </li>
                                 <li>
-                                    <i class="icon-call-end c-theme-font"></i> 646-633-4664
+                                    <i class="icon-call-end c-theme-font"></i> 646-633-4663
                                 </li>
                                 <li>
-                                    <i class="icon-envelope c-theme-font"></i> <a href="mailto:support@printmybox.com" style="color: #818e9a;">support@printmybox.com</a>
+                                    <i class="icon-envelope c-theme-font"></i> <a href="mailto:support@printmybox.com" target="new" style="color: #818e9a;">support@printmybox.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -717,16 +719,9 @@
         </div>
         <div class="sticky-container">
             <ul class="sticky">
+                
                 <li>
-                    <img src="/img/fb.jpg" width="32" height="32">
-                    <p><a href="https://www.facebook.com/PrintMyBoxCom/" target="_blank">Like Us on<br>Facebook</a></p>
-                </li>
-                <li>
-                    <img src="/img/inst.jpg" width="32" height="32">
-                    <p><a href="#" target="_blank">Follow Us on<br>Instagram</a></p>
-                </li>
-                <li>
-                    <img src="/img/qu.jpg" width="32" height="32">
+                    <a href="/Home/PriceQuote"><img src="/img/price-q.jpg" width="32" height="200"></a>
                     <p><a href="/Home/PriceQuote" target="_blank">Get Custom <br>Quote</a></p>
                 </li>
 
@@ -735,7 +730,7 @@
         <div class="c-postfooter">
             <div class="container">
                 <p class="c-font-oswald c-font-14">
-                    Copyright &copy; 2018 <span style="color: #fff;">Print My Box</span>. Powered By: <a href="http://www.premiersolinc.com/" style="color: #fff;">Premier Solutions Inc.</a>
+                    Copyright &copy; 2019 <span style="color: #fff;">Print My Box</span>. Powered By: <a href="http://www.premiersolinc.com/" style="color: #fff;">Premier Solutions Inc.</a>
                 </p>
             </div>
         </div>

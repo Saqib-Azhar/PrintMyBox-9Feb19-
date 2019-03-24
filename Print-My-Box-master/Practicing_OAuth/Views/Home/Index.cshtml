@@ -37,8 +37,21 @@
     <link href="/assets/base/css/themes/default.css" rel="stylesheet" id="style_theme" type="text/css" />
     <link href="/assets/base/css/custom.css" rel="stylesheet" type="text/css" />
     <!-- END THEME STYLES -->
-    <link rel="shortcut icon" href="favicon.ico" />
-    @Html.Action("_JsonLdPartial", "Home")
+    <link rel="shortcut icon" href="favicon.png" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-122300174-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-122300174-1');
+</script>
+@Html.Action("_JsonLdPartial", "Home")
+
+
+
+
 </head>
 <body class="c-layout-header-fixed">
     <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
@@ -49,7 +62,7 @@
                 <!-- BEGIN: BRAND -->
                 <div class="c-navbar-wrapper clearfix">
                     <div class="c-brand c-pull-left">
-                        <a href="/Home/Index" class="c-logo">
+                        <a href="" class="c-logo">
                             <img src="/assets/base/img/layout/logos/logo-3.png" alt="Print My Box" title="Print My Box" class="c-desktop-logo">
                             <img src="/assets/base/img/layout/logos/logo-3.png" alt="Print My Box" title="Print My Box" class="c-desktop-logo-inverse">
                             <img src="/assets/base/img/layout/logos/logo-1.png" alt="Print My Box" title="Print My Box" class="c-mobile-logo">
@@ -331,7 +344,7 @@
                                 <h3 class="c-block-bordered c-font-48 c-font-bold c-font-center c-font-uppercase c-font-white c-block"> Cosmetic Boxes <br>Beauty inside and out <br>Beautify you cosmetics with custom<br> cosmetic packaging</h3>
                             </div>
                             <div class="caption lft tp-resizeme" data-x="center" data-y="center" data-voffset="110" data-speed="900" data-start="2000" data-easing="easeOutExpo">
-                                <a href="Products/productsByCategory/19" class="c-action-btn btn btn-lg c-btn-square c-theme-btn c-btn-bold c-btn-uppercase">View Details</a>
+                                <a href="https://www.printmybox.com/Products/productsByCategory/19" class="c-action-btn btn btn-lg c-btn-square c-theme-btn c-btn-bold c-btn-uppercase">View Details</a>
                             </div>
 
                         </li>
@@ -421,7 +434,12 @@
 
                         <li data-transition="fade" data-slotamount="1" data-masterspeed="1000">
                             <img alt="" src="/assets/base/img/content/backgrounds/gift.jpg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat">
-                            <!-- <div class="caption customin customout tp-resizeme" data-x="center" data-y="center" data-hoffset="" data-voffset="-50" data-speed="500" data-start="1000" data-customin="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600"> -->
+                            
+							<div class="caption lft tp-resizeme" data-x="center" data-y="center" data-voffset="110" data-speed="900" data-start="2000" data-easing="easeOutExpo">
+                                <a href="https://www.printmybox.com/Products/productsByCategory/23" class="c-action-btn btn btn-lg c-btn-square c-theme-btn c-btn-bold c-btn-uppercase">View Details</a>
+                            </div>
+							
+							<!-- <div class="caption customin customout tp-resizeme" data-x="center" data-y="center" data-hoffset="" data-voffset="-50" data-speed="500" data-start="1000" data-customin="x:0;y:0;z:0;rotationX:0.5;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;" data-easing="Back.easeOut" data-splitin="none" data-splitout="none" data-elementdelay="0.1" data-endelementdelay="0.1" data-endspeed="600"> -->
                             <!-- <h3 class="c-block-bordered c-font-48 c-font-bold c-font-center c-font-uppercase c-font-white c-block">Medicine Boxes<br>Need Tagline here</h3> -->
                             <!-- </div> -->
                             <!-- <div class="caption lft tp-resizeme" data-x="center" data-y="center" data-voffset="110" data-speed="900" data-start="2000" data-easing="easeOutExpo"> -->
@@ -722,19 +740,12 @@
                 <div class="">
                     <div class="row">
                         <div class="col-md-7">
-                            <div class="c-content-feature-5">
-                                <div class="c-content-title-1">
-                                    <h3 class="c-left c-font-dark c-font-uppercase c-font-bold">Why<br />Print My <br />Box?</h3>
-                                    <div class="c-line-left c-bg-blue-3 c-theme-bg">
-                                    </div>
-                                </div>
-                                <div class="c-text">
-                                    Premier Solutions Inc. is a pioneer in the field of marketing products. We offer all kinds of custom printed items, from...
-                                </div>
-                                <a href="/Home/About"><button type="submit" class="btn c-btn-uppercase btn-md c-btn-bold c-btn-square c-theme-btn">Read Mre</button></a>
-                                <img class="c-photo img-responsive" width="420" alt="" src="/img/about.jpg" />
-                            </div>
-                        </div>
+							<div class="embed-responsive embed-responsive-4by3">
+								<iframe src="https://www.youtube.com/embed/9bbso8ddqiA" class="embed-responsive-item" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen>
+								</iframe>
+							</p>
+						</div>
+					</div>
                         <div class="col-md-5">
                             <div class="c-content-accordion-1 c-theme">
                                 <div class="panel-group" id="accordion" role="tablist">
@@ -853,30 +864,7 @@
         <!-- BEGIN: CONTENT/BARS/BAR-5 -->
         <!-- END: CONTENT/BARS/BAR-5 -->
         <!-- BEGIN: CONTENT/MISC/SUBSCRIBE-FORM-1 -->
-        <div class="c-content-box c-size-sm c-bg-dark">
-            <div class="container">
-                <div class="c-content-subscribe-form-1">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <h3 class="c-title c-font-30 c-font-uppercase c-font-bold">Subscribe to our newsletter</h3>
-                            <div class="c-body c-font-16 c-font-uppercase c-font-sbold">
-                                Just enter your email address to get our weekly newsletter and new products information
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <form action="#">
-                                <div class="input-group input-group-lg">
-                                    <input type="text" class="form-control input-lg" placeholder="Your Email Here">
-                                    <span class="input-group-btn">
-                                        <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">SUBSCRIBE</button>
-                                    </span>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
 
 
@@ -968,7 +956,7 @@
                                     A great resource for Custom Printed Boxes, Custom Printed Box and Custom Boxes. Our Boxes are best in the market with fully customized design.
                                 </p>
                             </div>
-                            <ul class="c-links">
+                           <ul class="c-links">
                                 <li>
                                     <a href="/Home/Index">Home</a>
                                 </li>
@@ -976,16 +964,7 @@
                                     <a href="/Home/About">About Us</a>
                                 </li>
                                 <li>
-                                    By Indsutries@*<a href="/Products/productsByCategoryType/1">By Indsutries</a>*@
-                                </li>
-                                <li>
-                                    By Box Style@*<a href="/Products/productsByCategoryType/2">By Box Style</a>*@
-                                </li>
-                                <li>
                                     <a href="/Home/Blog">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="/terms.html">Terms</a>
                                 </li>
                                 <li>
                                     <a href="/Home/Contact">Contact Us</a>
@@ -1033,14 +1012,23 @@
                                 <li>
                                     <a href="https://www.facebook.com/PrintMyBoxCom" target="new"><i class="icon-social-facebook"></i></a>
                                 </li>
-                                <li>
-                                    <a href="#"><i class="icon-social-twitter"></i></a>
+								<li>
+                                    <a href="https://www.instagram.com/printmyboxcom/" target="new"><i class="fa fa-instagram"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-social-youtube"></i></a>
+                                    <a href="https://twitter.com/printmyboxcom" target="new"><i class="icon-social-twitter"></i></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="icon-social-tumblr"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCP8o8UkQr7rToqw4Ee5ZwFQ/videos"  target="new"><i class="icon-social-youtube"></i></a>
+                                </li>
+                                <li>
+                                    <a href="https://www.pinterest.com/PrintMyBox/" target="new"><i class="fa fa-pinterest"></i></a>
+                                </li>
+								<li>
+                                    <a href="https://www.linkedin.com/company/printmybox/" target="new"><i class="fa fa-linkedin"></i></a>
+                                </li>
+								<li>
+                                    <a href="https://www.flickr.com/photos/128471729@N04/" target="new"><i class="fa fa-flickr"></i></a>
                                 </li>
                             </ul>
                             <ul class="c-address">
@@ -1048,10 +1036,10 @@
                                     <i class="icon-pointer c-theme-font"></i> 2252 Valencia Dr, Lexington, KY 40513
                                 </li>
                                 <li>
-                                    <i class="icon-call-end c-theme-font"></i> 646-633-4664
+                                    <i class="icon-call-end c-theme-font"></i> 646-633-4663
                                 </li>
                                 <li>
-                                    <i class="icon-envelope c-theme-font"></i> <a href="mailto:support@printmybox.com" style="color: #818e9a;">support@printmybox.com</a>
+                                    <i class="icon-envelope c-theme-font"></i> <a href="mailto:support@printmybox.com"   target="blank" style="color: #818e9a;">support@printmybox.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -1063,14 +1051,7 @@
 
         <div class="sticky-container">
             <ul class="sticky">
-                <li>
-                    <img src="/img/fb.jpg" width="32" height="32">
-                    <p><a href="https://www.facebook.com/PrintMyBoxCom/" target="_blank">Like Us on<br>Facebook</a></p>
-                </li>
-                <li>
-                    <img src="/img/inst.jpg" width="32" height="32">
-                    <p><a href="#" target="_blank">Follow Us on<br>Instagram</a></p>
-                </li>
+                
                 <li>
                     <img src="/img/qu.jpg" width="32" height="32">
                     <p><a href="/Home/PriceQuote" target="_blank">Get Custom <br>Quote</a></p>
@@ -1080,16 +1061,9 @@
         </div>
         <div class="sticky-container">
             <ul class="sticky">
+                
                 <li>
-                    <img src="/img/fb.jpg" width="32" height="32">
-                    <p><a href="https://www.facebook.com/PrintMyBoxCom/" target="_blank">Like Us on<br>Facebook</a></p>
-                </li>
-                <li>
-                    <img src="/img/inst.jpg" width="32" height="32">
-                    <p><a href="#" target="_blank">Follow Us on<br>Instagram</a></p>
-                </li>
-                <li>
-                    <img src="/img/qu.jpg" width="32" height="32">
+                    <a href="/Home/PriceQuote"><img src="/img/price-q.jpg" width="32" height="200"></a>
                     <p><a href="/Home/PriceQuote" target="_blank">Get Custom <br>Quote</a></p>
                 </li>
 
@@ -1098,7 +1072,7 @@
         <div class="c-postfooter">
             <div class="container">
                 <p class="c-font-oswald c-font-14">
-                    Copyright &copy; 2018 <span style="color: #fff;">Print My Box</span>. Powered By: <a href="http://www.premiersolinc.com/" style="color: #fff;">Premier Solutions Inc.</a>
+                    Copyright &copy; 2019 <span style="color: #fff;">Print My Box</span>. Powered By: <a href="http://www.premiersolinc.com/" style="color: #fff;">Premier Solutions Inc.</a>
                 </p>
             </div>
         </div>
