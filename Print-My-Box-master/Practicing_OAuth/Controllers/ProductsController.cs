@@ -492,6 +492,7 @@ namespace Practicing_OAuth.Controllers
                     return HttpNotFound();
                 ViewBag.Id = categoryWiseId;
                 var ProdSubList = ProductsList.Where(s => s.CategoryId == categoryWiseId && s.IsEnabled == true);
+                ViewBag.CategoryName = ProdSubList.FirstOrDefault().Category.CategoryName;
                 return View("productsByCategory",ProdSubList.ToPagedList(Convert.ToInt32(categoryWisePageNo), Convert.ToInt32(categoryWisePageSize)));
             }
             catch (Exception ex)

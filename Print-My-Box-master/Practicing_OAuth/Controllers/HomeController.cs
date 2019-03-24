@@ -33,7 +33,7 @@ namespace Practicing_OAuth.Controllers
         public ActionResult IndexView()
         {
             var ProductsList = db.Products.ToList();
-            ViewBag.ProductsList = ProductsList;
+            ViewBag.ProductsList = ProductsList.Take(15).ToList();
             ViewBag.CategoriesList = db.Categories.ToList();
             ViewBag.CategoryTypesList = db.CategoryTypes.ToList();
             return View("Index");
