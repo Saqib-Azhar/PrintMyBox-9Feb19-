@@ -39,25 +39,25 @@ namespace Practicing_OAuth.Controllers
             return View("Index");
         }
 
-        public ActionResult Contact()
-        {
-            return RedirectToAction("ContactView", "Contact");
-        }
+        //public ActionResult Contact()
+        //{
+        //    return RedirectToAction("ContactView", "Contact");
+        //}
 
-        public ActionResult Blog()
-        {
-            return RedirectToAction("BlogView", "Blog");
-        }
+        //public ActionResult Blog()
+        //{
+        //    return RedirectToAction("BlogView", "Blog");
+        //}
 
-        public ActionResult About()
-        {
-            return RedirectToAction("AboutView", "About");
-        }
+        //public ActionResult About()
+        //{
+        //    return RedirectToAction("AboutView", "About");
+        //}
 
-        public ActionResult PriceQuote()
-        {
-            return RedirectToAction("PriceQuoteView", "PriceQuote");
-        }
+        //public ActionResult PriceQuote()
+        //{
+        //    return RedirectToAction("PriceQuoteView", "PriceQuote");
+        //}
         public ActionResult ContactDetails(FormCollection contactDetails)
         {
             var Name = contactDetails["Name"];

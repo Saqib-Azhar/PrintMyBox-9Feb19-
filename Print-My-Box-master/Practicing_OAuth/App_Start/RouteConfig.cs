@@ -41,7 +41,7 @@ namespace Practicing_OAuth
             routes.MapRoute(
                 name: "ProductByCategory",
                 url: "category/{category}/",
-                defaults: new { controller = "Products", action = "Category", category = UrlParameter.Optional }
+                defaults: new { controller = "Products", action = "Category", category = UrlParameter.Optional, pageNo = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Products",

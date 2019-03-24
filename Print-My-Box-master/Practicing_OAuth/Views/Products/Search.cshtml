@@ -1,5 +1,6 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
+@using System.Text
 @model IPagedList<Practicing_OAuth.Models.Product>
 
 @{
@@ -17,38 +18,42 @@
     <div class="row">
         @foreach (var item in Model)
         {
+            var productSlugCustom = item.SlugURL.Replace('_', '-');
+            StringBuilder productbuilder = new StringBuilder(productSlugCustom);
+            productbuilder.Replace("-&-", "-And-");
+            productSlugCustom = productbuilder.ToString();
             <div class="col-md-3">
                 <div class="panel panel-primary">
                     <div class="panel-body" style="min-height:220px;min-width:285px">
 
-                        <a href="/Products/Details/@item.Id">
-                            <div style="align-content:center">
-                                @if (item.Image1 != null)
-                                {
-                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image1" style="max-height:250px; max-width:225px;" />
-                                }
-                                else if (item.Image2 != null)
-                                {
-                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image2" style="max-height:250px; max-width:225px;" />
-                                }
-                                else if (item.Image3 != null)
-                                {
-                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image3" style="max-height:250px; max-width:225px;" />
-                                }
-                                else if (item.Image4 != null)
-                                {
-                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image4" style="max-height:250px; max-width:225px;" />
-                                }
-                                else if (item.Image5 != null)
-                                {
-                                    <img alt="@item.Name" src="~/UploadedProductImages/@item.Image5" style="max-height:250px; max-width:225px;" />
-                                }
-                            </div>
-                            <div class="caption" style="text-align:center">
-                                @item.Name
-                            </div>
-                        </a>
-                    </div>
+                        <a href="@Url.Action("Item", "Products", new { prodName = productSlugCustom })">
+                                <div style="align-content:center">
+                                    @if (item.Image1 != null)
+                                    {
+                                        <img alt="@item.Name" src="~/UploadedProductImages/@item.Image1" style="max-height:250px; max-width:225px;" />
+                                    }
+                                    else if (item.Image2 != null)
+                                    {
+                                        <img alt="@item.Name" src="~/UploadedProductImages/@item.Image2" style="max-height:250px; max-width:225px;" />
+                                    }
+                                    else if (item.Image3 != null)
+                                    {
+                                        <img alt="@item.Name" src="~/UploadedProductImages/@item.Image3" style="max-height:250px; max-width:225px;" />
+                                    }
+                                    else if (item.Image4 != null)
+                                    {
+                                        <img alt="@item.Name" src="~/UploadedProductImages/@item.Image4" style="max-height:250px; max-width:225px;" />
+                                    }
+                                    else if (item.Image5 != null)
+                                    {
+                                        <img alt="@item.Name" src="~/UploadedProductImages/@item.Image5" style="max-height:250px; max-width:225px;" />
+                                    }
+                                </div>
+                                <div class="caption" style="text-align:center">
+                                    @item.Name
+                                </div>
+                            </a>
+</div>
                 </div>
             </div>
         }

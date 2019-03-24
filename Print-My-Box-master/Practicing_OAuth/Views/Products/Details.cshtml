@@ -1,4 +1,5 @@
 ﻿@model Practicing_OAuth.Models.Product
+@using System.Text
 @{
 
     var RelatedCategoriesList = ViewBag.CategoriesList as IEnumerable<Practicing_OAuth.Models.Category>;
@@ -154,7 +155,11 @@
                                 <ul class="c-menu c-arrow-dot c-theme">
                                     @foreach (var product in RelatedProductsList.Where(s => s.CategoryId == category.Id))
                                     {
-                                        <li><a href="/Products/Details/@product.Id">@product.Name</a></li>
+                                        var productSlugCustom = product.SlugURL.Replace('_', '-');
+                                        StringBuilder productbuilder = new StringBuilder(productSlugCustom);
+                                        productbuilder.Replace("-&-", "-And-");
+                                        productSlugCustom = productbuilder.ToString();
+                                        <li><a href="@Url.Action("Item", "Products", new { prodName = productSlugCustom })">@product.Name</a></li>
                                     }
                                 </ul>
                             </div>
@@ -363,7 +368,7 @@
                                                                 <strong>UV Coating</strong>:
                                                                 Discretionary UV Coating for additional Sparkle and Durability
                                                             </p>
-                                                            <p class="c-font-15"><strong>We offer FREE transporting all over US, so <a href="/Home/Contact">CALL</a> / CHAT NOW and GET a <a href="/Home/PriceQuote">FREE QUOTE.</a></strong></p>
+                                                            <p class="c-font-15"><strong>We offer FREE transporting all over US, so <a href="/Contact/ContactView">CALL</a> / CHAT NOW and GET a <a href="/PriceQuote/PriceQuoteView">FREE QUOTE.</a></strong></p>
                                                         </div>
                                                     </li>
 
@@ -575,13 +580,13 @@
                                     <a href="/Home/Index">Home</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/About">About Us</a>
+                                    <a href="/About/AboutView">About Us</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/Blog">Blog</a>
+                                    <a href="/Blog/BlogView">Blog</a>
                                 </li>
                                 <li>
-                                    <a href="/Home/Contact">Contact Us</a>
+                                    <a href="/Contact/ContactView">Contact Us</a>
                                 </li>
 
                             </ul>
@@ -665,8 +670,8 @@
             <ul class="sticky">
                 
                 <li>
-                    <a href="/Home/PriceQuote"><img src="/img/price-q.jpg" width="32" height="200"></a>
-                    <p><a href="/Home/PriceQuote" target="_blank">Get Custom <br>Quote</a></p>
+                    <a href="/PriceQuote/PriceQuoteView"><img src="/img/price-q.jpg" width="32" height="200"></a>
+                    <p><a href="/PriceQuote/PriceQuoteView" target="_blank">Get Custom <br>Quote</a></p>
                 </li>
 
             </ul>

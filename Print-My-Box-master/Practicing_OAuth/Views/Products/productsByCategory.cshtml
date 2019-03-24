@@ -1,5 +1,6 @@
 ﻿@using PagedList;
 @using PagedList.Mvc;
+@using System.Text
 @model IPagedList<Practicing_OAuth.Models.Product>
 
 @{
@@ -16,11 +17,15 @@
     <div class="row">
         @foreach (var item in Model)
         {
+            var productSlugCustom = item.SlugURL.Replace('_', '-');
+            StringBuilder productbuilder = new StringBuilder(productSlugCustom);
+            productbuilder.Replace("-&-", "-And-");
+            productSlugCustom = productbuilder.ToString();
             <div class="col-md-3">
                 <div class="panel panel-primary">
                     <div class="panel-body" style="min-height:220px;min-width:285px">
 
-                        <a href="/Products/Details/@item.Id">
+                        <a href="@Url.Action("Item", "Products", new { prodName = productSlugCustom })">
                             <div style="align-content:center">
                                 @if (item.Image1 != null)
                                 {
@@ -52,7 +57,7 @@
             </div>
         }
     </div>
-    <p style="text-align:center">@Html.PagedListPager(Model, pageNo => Url.Action("productsByCategory", new { ViewBag.Id ,pageNo }))</p>
+    <p style="text-align:center">@Html.PagedListPager(Model, pageNo => Url.Action("Category", "Products", new { category = ViewBag.CategorySlug, pageNo = pageNo }))</p>
 </div>
 
 

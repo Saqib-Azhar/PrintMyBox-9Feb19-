@@ -36,26 +36,26 @@ namespace Practicing_OAuth.Controllers
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+        //public ActionResult Details(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
 
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
+        //    Product product = db.Products.Find(id);
+        //    if (product == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
 
-            //var product = db.Products.Find(id);
-            //  return Redirect(Url.Action("Item","Products")+"?slugURL=" + product.SlugURL);// "Item", "Products", new { product.SlugURL });
-            var productSlug = product.SlugURL.Replace('_', '-');
-            return RedirectToAction("Item", "Products", new { prodName = productSlug });
+        //    //var product = db.Products.Find(id);
+        //    //  return Redirect(Url.Action("Item","Products")+"?slugURL=" + product.SlugURL);// "Item", "Products", new { product.SlugURL });
+        //    var productSlug = product.SlugURL.Replace('_', '-');
+        //    return RedirectToAction("Item", "Products", new { prodName = productSlug });
 
 
-        }
+        //}
         //[AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
         [Route("{prodName}/")]
         public ActionResult Item(string prodName)
@@ -63,7 +63,7 @@ namespace Practicing_OAuth.Controllers
 
             string id = prodName;
 
-            if (id == null || id == "")
+            if (string.IsNullOrEmpty(id))
             {
                 return Redirect("/Home/Index");
             }
@@ -419,67 +419,68 @@ namespace Practicing_OAuth.Controllers
             }
             base.Dispose(disposing);
         }
-        [AllowAnonymous]
-        public ActionResult productsByCategoryType(int? id, int? pageNo = 1, int? pageSize = 16)
-        {
-            try
-            {
-                if (ProductsList.Count == 0)
-                {
-                    var products = db.Products.ToList();
-                    ProductsList = products;
-                }
-                ViewBag.Id = id;
-                var ProdSubList = ProductsList.Where(s => s.Category.CategoryTypeId == id && s.IsEnabled == true);
-                return View(ProdSubList.ToPagedList(Convert.ToInt32(pageNo), Convert.ToInt32(pageSize)));
+        //[AllowAnonymous]
+        //public ActionResult productsByCategoryType(int? id, int? pageNo = 1, int? pageSize = 16)
+        //{
+        //    try
+        //    {
+        //        if (ProductsList.Count == 0)
+        //        {
+        //            var products = db.Products.ToList();
+        //            ProductsList = products;
+        //        }
+        //        ViewBag.Id = id;
+        //        var ProdSubList = ProductsList.Where(s => s.Category.CategoryTypeId == id && s.IsEnabled == true);
+        //        return View(ProdSubList.ToPagedList(Convert.ToInt32(pageNo), Convert.ToInt32(pageSize)));
 
-            }
-            catch (Exception ex)
-            {
-                HomeController.infoMessage(ex.Message);
-                HomeController.writeErrorLog(ex);
-                if (ProductsList.Count == 0)
-                {
-                    var products = db.Products.ToList();
-                    ProductsList = products;
-                }
-                ViewBag.Id = id;
-                var ProdSubList = ProductsList.Where(s => s.Category.CategoryTypeId == id && s.IsEnabled == true);
-                return View(ProdSubList.ToPagedList(Convert.ToInt32(pageNo), Convert.ToInt32(pageSize))); 
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        HomeController.infoMessage(ex.Message);
+        //        HomeController.writeErrorLog(ex);
+        //        if (ProductsList.Count == 0)
+        //        {
+        //            var products = db.Products.ToList();
+        //            ProductsList = products;
+        //        }
+        //        ViewBag.Id = id;
+        //        var ProdSubList = ProductsList.Where(s => s.Category.CategoryTypeId == id && s.IsEnabled == true);
+        //        return View(ProdSubList.ToPagedList(Convert.ToInt32(pageNo), Convert.ToInt32(pageSize))); 
+        //    }
 
-        }
+        //}
         static int? categoryWisePageNo = 1;
         static int? categoryWisePageSize = 16;
         static int? categoryWiseId = -1;
-        public ActionResult productsByCategory(int id, int? pageNo = 1, int? pageSize = 16)
-        {
-            categoryWisePageNo = pageNo;
-            categoryWisePageSize = pageSize;
-            categoryWiseId = id;
-            var category = db.Categories.FirstOrDefault(s => s.Id == id);
-            var categoryName = category.CategoryName.Replace(' ', '-');
+        //public ActionResult productsByCategory(int id, int? pageNo = 1, int? pageSize = 16)
+        //{
+        //    categoryWisePageNo = pageNo;
+        //    categoryWisePageSize = pageSize;
+        //    categoryWiseId = id;
+        //    var category = db.Categories.FirstOrDefault(s => s.Id == id);
+        //    var categoryName = category.CategoryName.Replace(' ', '-');
             
 
-            StringBuilder builder = new StringBuilder(categoryName);
-            builder.Replace("-&-", "-And-");
-            categoryName = builder.ToString();
-            return RedirectToAction("Category", "Products", new { category = categoryName });
-        }
+        //    StringBuilder builder = new StringBuilder(categoryName);
+        //    builder.Replace("-&-", "-And-");
+        //    categoryName = builder.ToString();
+        //    return RedirectToAction("Category", "Products", new { category = categoryName });
+        //}
 
         [Route("category/{category}/")]
-        public ActionResult Category(string category)
+        public ActionResult Category(string category, int? pageNo = 1, int? pageSize = 16)
         {
 
             try
             {
+                ViewBag.CategorySlug = category;
                 if (ProductsList.Count == 0)
                 {
                     var products = db.Products.ToList();
                     ProductsList = products;
                 }
-                if(categoryWiseId == -1)
-                {
+                //if(categoryWiseId == -1)
+                //{
 
                     StringBuilder builder = new StringBuilder(category);
                     builder.Replace("-And-", "-&-");
@@ -487,12 +488,16 @@ namespace Practicing_OAuth.Controllers
                     category = category.Replace('-', ' ');
                     var categoryObj = db.Categories.FirstOrDefault(s => s.CategoryName == category);
                     categoryWiseId = categoryObj.Id;
-                }
+                //}
+                categoryWisePageNo = pageNo;
+                categoryWisePageSize = pageSize;
+                //var categoryRes = db.Categories.FirstOrDefault(s=>s.CategoryName == category);
+                //categoryWiseId = categoryRes.Id;
                 if (category.Contains("_"))
                     return HttpNotFound();
                 ViewBag.Id = categoryWiseId;
                 var ProdSubList = ProductsList.Where(s => s.CategoryId == categoryWiseId && s.IsEnabled == true);
-                ViewBag.CategoryName = ProdSubList.FirstOrDefault().Category.CategoryName;
+                ViewBag.CategoryName = category;
                 return View("productsByCategory",ProdSubList.ToPagedList(Convert.ToInt32(categoryWisePageNo), Convert.ToInt32(categoryWisePageSize)));
             }
             catch (Exception ex)
@@ -517,6 +522,7 @@ namespace Practicing_OAuth.Controllers
                     categoryWiseId = categoryObj.Id;
                 }
                 ViewBag.Id = categoryWiseId;
+                ViewBag.CategoryName = category;
                 var ProdSubList = ProductsList.Where(s => s.CategoryId == categoryWiseId && s.IsEnabled == true);
                 return View("productsByCategory", ProdSubList.ToPagedList(Convert.ToInt32(categoryWisePageNo), Convert.ToInt32(categoryWisePageSize)));
             }

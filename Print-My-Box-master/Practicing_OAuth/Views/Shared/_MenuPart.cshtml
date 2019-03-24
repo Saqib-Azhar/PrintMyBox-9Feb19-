@@ -1,4 +1,5 @@
-﻿@using Practicing_OAuth.Models
+﻿@using System.Text;
+@using Practicing_OAuth.Models
 @{
     Practicing_OAuth.Models.Practicing_OAuthEntities db = new Practicing_OAuthEntities();
 
@@ -26,12 +27,25 @@
                 <ul class="dropdown-menu c-menu-type-classic c-pull-left">
                     @foreach (var category in categoriesList.Where(s => s.CategoryType.Id == categoryType.Id))
                     {
+                        var categoryName = category.CategoryName.Replace(' ', '-');
+
+
+                        StringBuilder builder = new StringBuilder(categoryName);
+                        builder.Replace("-&-", "-And-");
+                        categoryName = builder.ToString();
                         <li class="dropdown-submenu">
-                            <a href="/Products/productsByCategory/@category.Id">@category.CategoryName</a>
+                            @*<a href="@Url.Action("Category", "Products", new { category= categoryName })">@category.CategoryName</a>*@
+                            @Html.ActionLink(category.CategoryName, "Category", "Products", new { category = categoryName }, null)
                             <ul class="dropdown-menu c-pull-right">
                                 @foreach (var product in productsList.Where(s => s.Category.Id == category.Id))
                                 {
-                                    <li><a href="/Products/Details/@product.Id">@product.Name</a></li>
+                                    var productSlugCustom = product.SlugURL.Replace('_', '-');
+                                    StringBuilder productbuilder = new StringBuilder(productSlugCustom);
+                                    productbuilder.Replace("-&-", "-And-");
+                                    productSlugCustom = productbuilder.ToString();
+                                    <li>
+                                        @Html.ActionLink(product.Name, "Item", "Products", new { prodName = productSlugCustom }, null)
+                                    </li>
                                 }
 
                             </ul>
@@ -46,10 +60,10 @@
 
 
         <li class="c-menu-type-classic"><a href="/Products/AllProducts" class="c-link">Products</a></li>
-        <li class="c-menu-type-classic"><a href="/Home/PriceQuote" class="c-link">Price Quote</a></li>
-        <li class="c-menu-type-classic"><a href="/Home/Blog" class="c-link">Blog</a></li>
-        <li class="c-menu-type-classic"><a href="/Home/About" class="c-link">About Us</a></li>
-        <li class="c-menu-type-classic"><a href="/Home/Contact" class="c-link">Contact Us</a></li>
+        <li class="c-menu-type-classic"><a href="/PriceQuote/PriceQuoteView" class="c-link">Price Quote</a></li>
+        <li class="c-menu-type-classic"><a href="/Blog/BlogView" class="c-link">Blog</a></li>
+        <li class="c-menu-type-classic"><a href="/About/AboutView" class="c-link">About Us</a></li>
+        <li class="c-menu-type-classic"><a href="/Contact/ContactView" class="c-link">Contact Us</a></li>
 
         @if (User.Identity.IsAuthenticated)
         {

@@ -20,3 +20,55 @@
 20-Nov-18 1:21:45 PM Practicing_OAuth Object reference not set to an instance of an object.
 20-Nov-18 2:07:51 PM Object reference not set to an instance of an object.
 20-Nov-18 2:07:51 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:31:33 PM Object reference not set to an instance of an object.
+24-Mar-19 4:31:33 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:44:44 PM Object reference not set to an instance of an object.
+24-Mar-19 4:44:44 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:47:04 PM Object reference not set to an instance of an object.
+24-Mar-19 4:47:04 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:47:40 PM Object reference not set to an instance of an object.
+24-Mar-19 4:47:40 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:48:35 PM Object reference not set to an instance of an object.
+24-Mar-19 4:48:35 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:48:43 PM Object reference not set to an instance of an object.
+24-Mar-19 4:48:43 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:51:01 PM Object reference not set to an instance of an object.
+24-Mar-19 4:51:01 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 4:53:40 PM The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+24-Mar-19 4:53:40 PM EntityFramework The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+24-Mar-19 4:54:44 PM The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+24-Mar-19 4:54:44 PM EntityFramework The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+24-Mar-19 4:55:25 PM The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+24-Mar-19 4:55:25 PM EntityFramework The ObjectContext instance has been disposed and can no longer be used for operations that require a connection.
+24-Mar-19 4:56:47 PM Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 4:56:47 PM EntityFramework Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 4:57:21 PM Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 4:57:21 PM EntityFramework Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 5:00:30 PM Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 5:00:30 PM EntityFramework Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 5:01:00 PM Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 5:01:00 PM EntityFramework Unable to create a constant value of type 'Practicing_OAuth.Models.Product'. Only primitive types or enumeration types are supported in this context.
+24-Mar-19 5:10:42 PM Object reference not set to an instance of an object.
+24-Mar-19 5:10:42 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:11:04 PM Object reference not set to an instance of an object.
+24-Mar-19 5:11:04 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:13:23 PM Object reference not set to an instance of an object.
+24-Mar-19 5:13:23 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:19:49 PM Object reference not set to an instance of an object.
+24-Mar-19 5:19:49 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:20:02 PM Object reference not set to an instance of an object.
+24-Mar-19 5:20:02 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:23:21 PM Object reference not set to an instance of an object.
+24-Mar-19 5:23:21 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:23:24 PM Object reference not set to an instance of an object.
+24-Mar-19 5:23:24 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:23:26 PM Object reference not set to an instance of an object.
+24-Mar-19 5:23:26 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:23:26 PM Object reference not set to an instance of an object.
+24-Mar-19 5:23:26 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:25:12 PM Object reference not set to an instance of an object.
+24-Mar-19 5:25:12 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:26:20 PM Object reference not set to an instance of an object.
+24-Mar-19 5:26:20 PM Practicing_OAuth Object reference not set to an instance of an object.
+24-Mar-19 5:26:27 PM Object reference not set to an instance of an object.
+24-Mar-19 5:26:27 PM Practicing_OAuth Object reference not set to an instance of an object.
