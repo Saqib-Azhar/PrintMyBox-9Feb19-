@@ -1,4 +1,5 @@
 ﻿@model Practicing_OAuth.Models.Product
+@using System.Text
 @{
 
     var RelatedCategoriesList = ViewBag.CategoriesList as IEnumerable<Practicing_OAuth.Models.Category>;
@@ -158,7 +159,10 @@
                                 <ul class="c-menu c-arrow-dot c-theme">
                                     @foreach (var product in RelatedProductsList.Where(s => s.CategoryId == category.Id))
                                     {
-                                        <li><a href="/Products/Details/@product.Id">@product.Name</a></li>
+                                        var productSlugCustom = product.SlugURL.Replace('_', '-');
+                                        StringBuilder productbuilder = new StringBuilder(productSlugCustom);
+                                        productSlugCustom = productbuilder.ToString();
+                                        <li><a href="/Products/Item/@productSlugCustom">@product.Name</a></li>
                                     }
                                 </ul>
                             </div>
