@@ -26,7 +26,7 @@ namespace Practicing_OAuth.Controllers
 
         public ActionResult Index()
         {
-            return RedirectToAction("IndexView");
+            return View();
         }
 
         [Route("Index")]
