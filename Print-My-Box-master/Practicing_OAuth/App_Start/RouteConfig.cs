@@ -14,8 +14,8 @@ namespace Practicing_OAuth
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Blog",
-                url: "Blog",
+                name: "Blogs",
+                url: "Blogs",
                 defaults: new { controller = "Blog", action = "BlogView", url = 1 }
             );
             routes.MapRoute(
@@ -35,8 +35,8 @@ namespace Practicing_OAuth
             );
             routes.MapRoute(
                 name: "Home",
-                url: "Index",
-                defaults: new { controller = "Home", action = "IndexView" }
+                url: "{id}",
+                defaults: new { controller = "Home", action = "IndexView", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "ProductByCategory",

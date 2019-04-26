@@ -11,6 +11,7 @@ namespace Practicing_OAuth.Controllers
     public class BlogController : Controller
     {
         // GET: Blog
+        [Route("Blogs")]
         public ActionResult BlogView(int? url = 1)
         {
             return View("~/Views/Home/Blog.cshtml");

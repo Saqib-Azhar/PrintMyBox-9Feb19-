@@ -24,17 +24,17 @@ namespace Practicing_OAuth.Controllers
         private static string SenderEmailHost = WebConfigurationManager.AppSettings["DefaultEmailHost"];
         private Practicing_OAuthEntities db = new Practicing_OAuthEntities();
 
-        public ActionResult Index()
-        {
-            var ProductsList = db.Products.ToList();
-            ViewBag.ProductsList = ProductsList.Take(15).ToList();
-            ViewBag.CategoriesList = db.Categories.ToList();
-            ViewBag.CategoryTypesList = db.CategoryTypes.ToList();
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    //var ProductsList = db.Products.ToList();
+        //    //ViewBag.ProductsList = ProductsList.Take(15).ToList();
+        //    //ViewBag.CategoriesList = db.Categories.ToList();
+        //    //ViewBag.CategoryTypesList = db.CategoryTypes.ToList();
+        //    return RedirectToAction("IndexView");
+        //}
 
         [Route("Index")]
-        public ActionResult IndexView()
+        public ActionResult IndexView(string id = "")
         {
             var ProductsList = db.Products.ToList();
             ViewBag.ProductsList = ProductsList.Take(15).ToList();
