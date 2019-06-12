@@ -111,9 +111,9 @@
           <Property Name="Stock" Type="nvarchar(max)" />
           <Property Name="Color" Type="nvarchar(max)" />
           <Property Name="Quantity" Type="int" />
-          <Property Name="Height" Type="int" />
-          <Property Name="Width" Type="int" />
-          <Property Name="Depth" Type="int" />
+          <Property Name="Height" Type="nvarchar(max)" />
+          <Property Name="Width" Type="nvarchar(max)" />
+          <Property Name="Depth" Type="nvarchar(max)" />
           <Property Name="Comments" Type="nvarchar(max)" />
           <Property Name="File" Type="nvarchar(max)" />
           <Property Name="SubmittedTime" Type="datetime" />
@@ -402,9 +402,9 @@
           <Property Name="Stock" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Color" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Quantity" Type="Int32" />
-          <Property Name="Height" Type="Int32" />
-          <Property Name="Width" Type="Int32" />
-          <Property Name="Depth" Type="Int32" />
+          <Property Name="Height" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Width" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Depth" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="File" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SubmittedTime" Type="DateTime" Precision="3" />

@@ -18,7 +18,7 @@ namespace Practicing_OAuth.Controllers
         // GET: PriceQuotes
         public ActionResult Index()
         {
-            return View(db.PriceQuotes.Where(s => s.IsDeleted == false).ToList());
+            return View(db.PriceQuotes.Where(s => s.IsDeleted == false).OrderByDescending(s=>s.SubmittedTime).ToList());
         }
 
         // GET: PriceQuotes/Details/5

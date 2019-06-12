@@ -21,9 +21,9 @@ namespace Practicing_OAuth.Models
         public string Stock { get; set; }
         public string Color { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<int> Height { get; set; }
-        public Nullable<int> Width { get; set; }
-        public Nullable<int> Depth { get; set; }
+        public string Height { get; set; }
+        public string Width { get; set; }
+        public string Depth { get; set; }
         public string Comments { get; set; }
         public string File { get; set; }
         public Nullable<System.DateTime> SubmittedTime { get; set; }

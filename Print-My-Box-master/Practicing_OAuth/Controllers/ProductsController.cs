@@ -88,9 +88,34 @@ namespace Practicing_OAuth.Controllers
         {
             try
             {
+                if (searchObjectsList.searchedProdList == null && searchObjectsList.searchedQuery != query)
+                {
+                    searchObjectsList.searchedQuery = query;
+                    searchObjectsList.searchedProdList = new List<Product>();
+
+                }
                 if (searchObjectsList.searchedProdList == null || (searchObjectsList.searchedProdList.Count == 0 || searchObjectsList.searchedQuery != query))
                 {
-                    searchObjectsList.searchedProdList = db.Products.Where(s => s.Name.Contains(query) && s.IsEnabled == true).ToList();
+                    var splitedQuery = query.Split(' ');
+                    if (splitedQuery.Count() > 1)
+                    {
+                        foreach (var subQuery in splitedQuery)
+                        {
+                            if (subQuery == "Box" || subQuery == "BOX" || subQuery == "box") 
+                            {
+                                continue;
+                            }
+                            var prodsList = db.Products.Where(s => s.Name.Contains(subQuery) && s.IsEnabled == true).ToList();
+                            foreach(var listItem in prodsList)
+                            {
+                                searchObjectsList.searchedProdList.Add(listItem);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        searchObjectsList.searchedProdList = db.Products.Where(s => s.Name.Contains(query) && s.IsEnabled == true).ToList();
+                    }
                     searchObjectsList.searchedQuery = query;
                 }
                 ViewBag.QueryString = query;

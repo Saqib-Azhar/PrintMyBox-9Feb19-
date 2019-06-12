@@ -20,7 +20,7 @@ namespace Practicing_OAuth.Models
         {
             this.ProductsReviews = new HashSet<ProductsReview>();
         }
-    
+
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<decimal> Price { get; set; }

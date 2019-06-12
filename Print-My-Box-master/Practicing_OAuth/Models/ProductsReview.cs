@@ -25,7 +25,7 @@ namespace Practicing_OAuth.Models
 
         [DisplayName("Submitted At")]
         public Nullable<System.DateTime> CreatedAt { get; set; }
-    
+
         public virtual Product Product { get; set; }
     }
 }

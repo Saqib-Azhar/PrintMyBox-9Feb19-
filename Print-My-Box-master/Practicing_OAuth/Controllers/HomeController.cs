@@ -220,9 +220,9 @@ namespace Practicing_OAuth.Controllers
                     QuoteObject.Quantity = Convert.ToInt32(Quantity);
                     QuoteObject.Stock = Stock;
                     QuoteObject.Color = Color;
-                    QuoteObject.Height = Convert.ToInt32(Height);
-                    QuoteObject.Width = Convert.ToInt32(Width);
-                    QuoteObject.Depth = Convert.ToInt32(Depth);
+                    QuoteObject.Height = Height;
+                    QuoteObject.Width = Width;
+                    QuoteObject.Depth = Depth;
                     QuoteObject.Comments = Comments;
                     QuoteObject.SubmittedTime = DateTime.Now;
                     QuoteObject.IsDeleted = false;

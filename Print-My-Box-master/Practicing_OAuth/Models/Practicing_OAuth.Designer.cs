@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'E:\S. A. Azhar\My Projects\Practicing_OAuth\Practicing_OAuth\Models\Practicing_OAuth.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\saqib\Source\Repos\PrintMyBox-9Feb19-\Print-My-Box-master\Practicing_OAuth\Models\Practicing_OAuth.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
