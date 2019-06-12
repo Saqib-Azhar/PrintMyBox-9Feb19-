@@ -36,11 +36,33 @@ namespace Practicing_OAuth.Controllers
         [Route("Index")]
         public ActionResult IndexView(string id = "")
         {
-            var ProductsList = db.Products.ToList();
-            ViewBag.ProductsList = ProductsList.Take(15).ToList();
-            ViewBag.CategoriesList = db.Categories.ToList();
-            ViewBag.CategoryTypesList = db.CategoryTypes.ToList();
-            return View("Index");
+            if (id == "" || id == " " || string.IsNullOrEmpty(id) || id == "index") 
+            {
+                var ProductsList = db.Products.ToList();
+                ViewBag.ProductsList = ProductsList.Take(15).ToList();
+                ViewBag.CategoriesList = db.Categories.ToList();
+                ViewBag.CategoryTypesList = db.CategoryTypes.ToList();
+                return View("Index");
+            }
+            else
+            {  
+                if (id.Contains("_"))
+                    return HttpNotFound();
+
+                id = id.Replace('-', '_');
+                Models.Product product = db.Products.FirstOrDefault(s => s.SlugURL == id);
+                if (product == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.Reviews = db.ProductsReviews.Where(s => s.ProductId == product.Id);
+                var Categories = db.Categories.Where(s => s.Id == product.CategoryId).ToList();
+                ViewBag.CategoriesList = Categories;
+                var Products = db.Products.Where(s => s.CategoryId == product.CategoryId).ToList();
+                ViewBag.ProductsList = Products;
+                return View("/Views/Products/Item.cshtml", product);
+            }
+
         }
 
         //public ActionResult Contact()

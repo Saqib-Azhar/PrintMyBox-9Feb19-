@@ -65,7 +65,7 @@ namespace Practicing_OAuth.Controllers
 
             if (string.IsNullOrEmpty(id))
             {
-                return Redirect("/Home/Index");
+                return Redirect("/ ");
             }
             if (id.Contains("_"))
                 return HttpNotFound();
