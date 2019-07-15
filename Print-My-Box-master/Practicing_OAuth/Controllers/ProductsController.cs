@@ -101,7 +101,7 @@ namespace Practicing_OAuth.Controllers
                     {
                         foreach (var subQuery in splitedQuery)
                         {
-                            if (subQuery == "Box" || subQuery == "BOX" || subQuery == "box") 
+                            if (subQuery == "Box" || subQuery == "BOX" || subQuery == "box" || subQuery == "package" || subQuery == "PACKAGE" || subQuery == "Package" || subQuery == "packages" || subQuery == "PACKAGES" || subQuery == "Packages") 
                             {
                                 continue;
                             }
@@ -582,7 +582,8 @@ namespace Practicing_OAuth.Controllers
                 db.ProductsReviews.Add(ReviewObj);
                 db.SaveChanges();
                 int id = ProductId;
-                return RedirectToAction("Details", "Products", new { id });
+                TempData["FormSubmitMessage"] = "Request Successfully Submitted!";
+                return Redirect(Request.UrlReferrer.ToString());
             }
             catch (Exception ex)
             {
@@ -591,7 +592,8 @@ namespace Practicing_OAuth.Controllers
 
                 var ProductId = Convert.ToInt32(fc["ProductId"]);
                 int id = ProductId;
-                return RedirectToAction("Details", "Products", new { id });
+                TempData["FormSubmitMessage"] = "Something went wrong please try again!";
+                return Redirect(Request.UrlReferrer.ToString());
             }
         }
     }

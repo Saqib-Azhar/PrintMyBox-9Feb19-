@@ -90,3 +90,9 @@ Parameter name: address
 12-Jun-19 10:02:50 PM Practicing_OAuth Object reference not set to an instance of an object.
 12-Jun-19 10:06:52 PM Object reference not set to an instance of an object.
 12-Jun-19 10:06:52 PM Practicing_OAuth Object reference not set to an instance of an object.
+14-Jul-19 5:47:27 PM The parameter 'address' cannot be an empty string.
+Parameter name: address
+14-Jul-19 5:47:27 PM System The parameter 'address' cannot be an empty string.
+Parameter name: address
+14-Jul-19 7:05:42 PM Failure sending mail.
+14-Jul-19 7:05:42 PM System Failure sending mail.

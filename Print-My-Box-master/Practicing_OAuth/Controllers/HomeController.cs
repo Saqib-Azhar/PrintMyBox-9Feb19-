@@ -239,119 +239,87 @@ namespace Practicing_OAuth.Controllers
                 }
 
 
-
-                var fromAddress = new MailAddress(SenderEmailId, "Quote Request: " + Name);
-                var toAddress = new MailAddress(Email, "Quote Request" + Name);
-                string fromPassword = SenderEmailPassword;
-                string subject = "Quote Request for Product " + ProductName;
-                string body = "Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Product Details: " + ProductName + "<br>Stock: " + Stock + "<br>Color: " + Color + "<br>Quantity: " + Quantity + "<br>Dimensions: " + Height + "x" + Width + "x" + Depth + "<br>Comments: " + Comments + "<br>Time: " + DateTime.Now;
-
-                var smtp = new SmtpClient
-                {
-                    Host = SenderEmailHost,
-                    Port = SenderEmailPort,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 20000
-                };
-
-                using (var message = new MailMessage(fromAddress, toAddress)
-                {
-                    IsBodyHtml = true,
-                    Subject = subject,
-                    Body = body
-                })
+                try
                 {
 
-                    if (File_input != null)
+                    var fromAddress = new MailAddress(SenderEmailId, "Quote Request: " + Name);
+                    var toAddress = new MailAddress(Email, "Quote Request" + Name);
+                    string fromPassword = SenderEmailPassword;
+                    string subject = "Quote Request for Product " + ProductName;
+                    string body = "Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Product Details: " + ProductName + "<br>Stock: " + Stock + "<br>Color: " + Color + "<br>Quantity: " + Quantity + "<br>Dimensions: " + Height + "x" + Width + "x" + Depth + "<br>Comments: " + Comments + "<br>Time: " + DateTime.Now;
 
+                    var smtp = new SmtpClient
+                    {
+                        Host = SenderEmailHost,
+                        Port = SenderEmailPort,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                        Timeout = 20000
+                    };
+
+                    using (var message = new MailMessage(fromAddress, toAddress)
+                    {
+                        IsBodyHtml = true,
+                        Subject = subject,
+                        Body = body
+                    })
                     {
 
-                        string fileName = Path.GetFileName(File_input.FileName);
-                        File_input.InputStream.Seek(0, SeekOrigin.Begin);
-                        message.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
-                        message.Bcc.Add(SenderEmailId);
+                        if (File_input != null)
+
+                        {
+
+                            string fileName = Path.GetFileName(File_input.FileName);
+                            File_input.InputStream.Seek(0, SeekOrigin.Begin);
+                            message.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
+                            message.Bcc.Add(SenderEmailId);
+                        }
+
+                        smtp.Send(message);
                     }
 
-                    smtp.Send(message);
-                }
 
+                    //return new FilePathResult(ViewPath, "text/html");
+                    var smtp1 = new SmtpClient
+                    {
+                        Host = SenderEmailHost,
+                        Port = SenderEmailPort,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                        Timeout = 20000
+                    };
 
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                // var fromSiteAddress = new MailAddress(SenderEmailId, "Print My Box");
-                //var toCustomerAddress = new MailAddress(Email, Name);
-                //string fromSitePassword = SenderEmailPassword;
-                //subject = "Quote Request Confirmation";
-                //body = "Your Following Quote Request Submitted, Thankyou for your precious time <br><br><b>Quote Request</b><br>Name: " + Name + "<br>Phone: " + Phone + " <br> " + "Email: " + Email + " <br> " + "Product Details: " + ProductName + " <br> Stock: " + Stock + " <br> Color: " + Color + " <br> Quantity: " + Quantity + " <br> Dimensions: " + Height +"x"+ Width +"x" + Depth + " <br> Time: " + DateTime.Now;
-                //HttpPostedFileBase File = null;
-                //if (Request.Files.Count > 0)
-                //{
-                //    File = Request.Files[0];
-                //}
-
-                //var smtp1 = new SmtpClient
-                //{
-                //    Host = SenderEmailHost,
-                //    Port = SenderEmailPort,
-                //    EnableSsl = true,
-                //    DeliveryMethod = SmtpDeliveryMethod.Network,
-                //    Credentials = new NetworkCredential(fromSiteAddress.Address, fromSitePassword),
-                //    Timeout = 20000
-                //};
-                //using (var message1 = new MailMessage(fromSiteAddress, toCustomerAddress)
-                //{
-                //    IsBodyHtml = true,
-                //    Subject = subject,
-                //    Body = body
-                //})
-                //{
-
-                //    if (AttachmentUserCopy != null)
-
-                //    {
-
-                //        string fileName = Path.GetFileName(AttachmentUserCopy.FileName);
-                //        AttachmentUserCopy.InputStream.Seek(0, SeekOrigin.Begin);
-                //        message1.Attachments.Add(new Attachment(AttachmentUserCopy.InputStream, fileName, MediaTypeNames.Application.Octet));
-
-                //    }
-                //    smtp1.Send(message1);
-                //}
-
-
-                //return new FilePathResult(ViewPath, "text/html");
-                var smtp1 = new SmtpClient
-                {
-                    Host = SenderEmailHost,
-                    Port = SenderEmailPort,
-                    EnableSsl = true,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                    Timeout = 20000
-                };
-
-                using (var message1 = new MailMessage(SenderEmailId, SenderEmailId)
-                {
-                    IsBodyHtml = true,
-                    Subject = subject,
-                    Body = body
-                })
-                {
-
-                    if (File_input != null)
-
+                    using (var message1 = new MailMessage(SenderEmailId, SenderEmailId)
+                    {
+                        IsBodyHtml = true,
+                        Subject = subject,
+                        Body = body
+                    })
                     {
 
-                        string fileName = Path.GetFileName(File_input.FileName);
-                        File_input.InputStream.Seek(0, SeekOrigin.Begin);
-                        message1.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
+                        if (File_input != null)
 
+                        {
+
+                            string fileName = Path.GetFileName(File_input.FileName);
+                            File_input.InputStream.Seek(0, SeekOrigin.Begin);
+                            message1.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
+
+                        }
+
+                        smtp1.Send(message1);
                     }
-
-                    smtp1.Send(message1);
                 }
+                catch (Exception ex)
+                {
+                    HomeController.infoMessage(ex.Message);
+                    HomeController.writeErrorLog(ex);
+                }
+
+                ViewBag.FormSubmitMessage = "Success";
+                TempData["FormSubmitMessage"] = "Request Successfully Submitted!";
                 return Redirect(Request.UrlReferrer.ToString());
             }
             catch (Exception ex)
