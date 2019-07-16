@@ -14,6 +14,7 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700&amp;subset=all' rel='stylesheet' type='text/css'>
     <link href="/assets/plugins/socicon/socicon.css" rel="stylesheet" type="text/css" />
     <link href="/assets/plugins/bootstrap-social/bootstrap-social.css" rel="stylesheet" type="text/css" />
@@ -48,7 +49,7 @@
   gtag('config', 'UA-122300174-1');
 </script>
 
-<script> https://www.googletagmanager.com/gtag/js?id=UA-122300174-1"></script>
+<script src="https://www.googletagmanager.com/gtag/js?id=UA-122300174-1"></script>
 </head>
 <body class="c-layout-header-fixed">
     <!-- BEGIN: LAYOUT/HEADERS/HEADER-1 -->
@@ -335,6 +336,9 @@
                                     <div class="form-group">
                                         <textarea rows="8" name="Message" placeholder="Write comment here ..." class="form-control c-theme c-square input-lg"></textarea>
                                     </div>
+
+                                    <div class="g-recaptcha" data-sitekey="6Lec9K0UAAAAAMoyDIvna4aMSrrrE0nM-AuEJEEE"></div>
+                                    <br />
                                     <button type="submit" class="btn c-theme-btn c-btn-uppercase btn-lg c-btn-bold c-btn-square">Submit</button>
                                 }
                             </div>
@@ -564,7 +568,12 @@
     <script src="/assets/base/js/app.js" type="text/javascript"></script>
     <script>
 	$(document).ready(function() {
-		App.init(); // init core
+	    App.init(); // init core
+	    var message = '@TempData["FormSubmitMessage"]'
+	    message = message == null || message == "" ? '@ViewBag.FormSubmitMessage' : message;
+	    if (message != null && message != "") {
+	        alert(message);
+	    }
 	});
     </script>
     <!-- END: THEME SCRIPTS -->

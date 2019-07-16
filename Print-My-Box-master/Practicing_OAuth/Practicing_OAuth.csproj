@@ -277,6 +277,7 @@
     <Compile Include="Models\AspNetUserLogin.cs">
       <DependentUpon>Practicing_OAuth.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CaptchaResponse.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>Practicing_OAuth.tt</DependentUpon>
     </Compile>

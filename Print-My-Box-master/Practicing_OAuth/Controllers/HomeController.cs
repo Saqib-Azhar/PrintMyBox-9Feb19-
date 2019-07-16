@@ -12,6 +12,7 @@ using Practicing_OAuth;
 using System.Web.Configuration;
 using Practicing_OAuth.Models;
 using Schema.NET;
+using Newtonsoft.Json;
 
 namespace Practicing_OAuth.Controllers
 {
@@ -22,6 +23,7 @@ namespace Practicing_OAuth.Controllers
         private static string SenderEmailPassword = WebConfigurationManager.AppSettings["DefaultEmailPassword"];
         private static int SenderEmailPort = Convert.ToInt32(WebConfigurationManager.AppSettings["DefaultEmailPort"]);
         private static string SenderEmailHost = WebConfigurationManager.AppSettings["DefaultEmailHost"];
+        public static string FormSubmissionMessage_HomeController = "";
         private Practicing_OAuthEntities db = new Practicing_OAuthEntities();
 
         //public ActionResult Index()
@@ -60,30 +62,13 @@ namespace Practicing_OAuth.Controllers
                 ViewBag.CategoriesList = Categories;
                 var Products = db.Products.Where(s => s.CategoryId == product.CategoryId).ToList();
                 ViewBag.ProductsList = Products;
+                ViewBag.FormSubmissionMessage = FormSubmissionMessage_HomeController == "" ? TempData["FormSubmitMessage"] : FormSubmissionMessage_HomeController;
+                FormSubmissionMessage_HomeController = "";
                 return View("/Views/Products/Item.cshtml", product);
             }
 
         }
-
-        //public ActionResult Contact()
-        //{
-        //    return RedirectToAction("ContactView", "Contact");
-        //}
-
-        //public ActionResult Blog()
-        //{
-        //    return RedirectToAction("BlogView", "Blog");
-        //}
-
-        //public ActionResult About()
-        //{
-        //    return RedirectToAction("AboutView", "About");
-        //}
-
-        //public ActionResult PriceQuote()
-        //{
-        //    return RedirectToAction("PriceQuoteView", "PriceQuote");
-        //}
+        
         public ActionResult ContactDetails(FormCollection contactDetails)
         {
             var Name = contactDetails["Name"];
@@ -91,145 +76,24 @@ namespace Practicing_OAuth.Controllers
             var Phone = contactDetails["Phone"];
             var Message = contactDetails["Message"];
 
-            try
+            CaptchaResponse response = ValidateCaptcha(Request["g-recaptcha-response"]);
+            if (response.Success)
             {
-                ContactUsData ContactUsObject = new ContactUsData();
-
-                ContactUsObject.UserName = Name;
-                ContactUsObject.Email = Email;
-                ContactUsObject.PhoneNumber = Phone;
-                ContactUsObject.Message = Message;
-                ContactUsObject.IsDeleted = false;
-                ContactUsObject.Seen = false;
-                ContactUsObject.SeenTime = null;
-                ContactUsObject.SubmittedTime = DateTime.Now;
-
-
-                db.ContactUsDatas.Add(ContactUsObject);
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                infoMessage(ex.Message);
-                writeErrorLog(ex);
-            }
-
-
-
-            var fromAddress = new MailAddress(SenderEmailId, "Contact Message By: " + Name);
-            var toAddress = new MailAddress(SenderEmailId, "Print My Box");
-            string fromPassword = SenderEmailPassword;
-            string subject = "PrintMyBox Contact Us form Submission by: " + Name;
-            string body = "Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Message: " + Message + "<br>Time: " + DateTime.Now;
-
-            var smtp = new SmtpClient
-            {
-                Host = SenderEmailHost,
-                Port = SenderEmailPort,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                Timeout = 20000
-            };
-            using (var message = new MailMessage(fromAddress, toAddress)
-            {
-                IsBodyHtml = true,
-                Subject = subject,
-                Body = body,
-
-            })
-            {
-                //message.Bcc.Add("support@printmybox.com");
-                smtp.Send(message);
-            }
-
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-            var fromSiteAddress = new MailAddress(SenderEmailId, "Print My Box");
-            var toCustomerAddress = new MailAddress(Email, Name);
-            string fromSitePassword = SenderEmailPassword;
-            subject = "PrintMyBox: Your Contact Form has submitted, Thankyou for your precious time ";
-            body = " <b>Form</b><br>Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Message: " + Message + "<br>Time: " + DateTime.Now;
-
-            var smtp1 = new SmtpClient
-            {
-                Host = SenderEmailHost,
-                Port = SenderEmailPort,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                Credentials = new NetworkCredential(fromSiteAddress.Address, fromSitePassword),
-                Timeout = 20000
-            };
-            using (var message = new MailMessage(fromSiteAddress, toCustomerAddress)
-            {
-                IsBodyHtml = true,
-                Subject = subject,
-                Body = body
-            })
-            {
-                smtp1.Send(message);
-            }
-
-
-            return RedirectToAction("Contact");
-        }
-        [HttpPost, ValidateInput(false)]
-        public ActionResult QuoteRequest(FormCollection fc, HttpPostedFileBase File_input)/*string ProductName, string Name, string Email, string Phone, string Stock, string Color, string Quantity, string Height, string Width, string Depth, string File, string Comments*/
-        {
-            try
-            {
-                string ProductName = fc["ProductName-input"];
-                string Name = fc["Name-input"];
-                string Email = fc["Email-input"];
-                string Phone = fc["Phone-input"];
-                string Stock = fc["Stock-input"];
-                string Color = fc["Color-input"];
-                string Quantity = fc["Quantity-input"];
-                string Height = fc["Height-input"];
-                string Width = fc["Width-input"];
-                string Depth = fc["Depth-input"];
-                string Comments = fc["Comments-input"];
-                string ViewPath = fc["ViewPath"];
-                HttpPostedFileBase AttachmentUserCopy = File_input;
-
                 try
                 {
-                    PriceQuote QuoteObject = new PriceQuote();
-                    if (AttachmentUserCopy != null)
-                    {
-                        string pic = System.IO.Path.GetFileName(AttachmentUserCopy.FileName);
-                        string path = System.IO.Path.Combine(
-                                               Server.MapPath("~/UploadedProductImages"), pic);
-                        // file is uploaded
-                        AttachmentUserCopy.SaveAs(path);
+                    ContactUsData ContactUsObject = new ContactUsData();
 
-                        // save the image path path to the database or you can send image 
-                        // directly to database
-                        // in-case if you want to store byte[] ie. for DB
-                        using (MemoryStream ms = new MemoryStream())
-                        {
-                            AttachmentUserCopy.InputStream.CopyTo(ms);
-                            byte[] array = ms.GetBuffer();
-                        }
-                        QuoteObject.File = AttachmentUserCopy.FileName;
+                    ContactUsObject.UserName = Name;
+                    ContactUsObject.Email = Email;
+                    ContactUsObject.PhoneNumber = Phone;
+                    ContactUsObject.Message = Message;
+                    ContactUsObject.IsDeleted = false;
+                    ContactUsObject.Seen = false;
+                    ContactUsObject.SeenTime = null;
+                    ContactUsObject.SubmittedTime = DateTime.Now;
 
-                    }
-                    QuoteObject.UserName = Name;
-                    QuoteObject.Email = Email;
-                    QuoteObject.PhoneNumber = Phone;
-                    QuoteObject.Quantity = Convert.ToInt32(Quantity);
-                    QuoteObject.Stock = Stock;
-                    QuoteObject.Color = Color;
-                    QuoteObject.Height = Height;
-                    QuoteObject.Width = Width;
-                    QuoteObject.Depth = Depth;
-                    QuoteObject.Comments = Comments;
-                    QuoteObject.SubmittedTime = DateTime.Now;
-                    QuoteObject.IsDeleted = false;
-                    QuoteObject.SeenTime = null;
-                    QuoteObject.Seen = false;
 
-                    db.PriceQuotes.Add(QuoteObject);
+                    db.ContactUsDatas.Add(ContactUsObject);
                     db.SaveChanges();
                 }
                 catch (Exception ex)
@@ -239,88 +103,236 @@ namespace Practicing_OAuth.Controllers
                 }
 
 
-                try
+
+                var fromAddress = new MailAddress(SenderEmailId, "Contact Message By: " + Name);
+                var toAddress = new MailAddress(SenderEmailId, "Print My Box");
+                string fromPassword = SenderEmailPassword;
+                string subject = "PrintMyBox Contact Us form Submission by: " + Name;
+                string body = "Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Message: " + Message + "<br>Time: " + DateTime.Now;
+
+                var smtp = new SmtpClient
                 {
+                    Host = SenderEmailHost,
+                    Port = SenderEmailPort,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                    Timeout = 20000
+                };
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    IsBodyHtml = true,
+                    Subject = subject,
+                    Body = body,
 
-                    var fromAddress = new MailAddress(SenderEmailId, "Quote Request: " + Name);
-                    var toAddress = new MailAddress(Email, "Quote Request" + Name);
-                    string fromPassword = SenderEmailPassword;
-                    string subject = "Quote Request for Product " + ProductName;
-                    string body = "Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Product Details: " + ProductName + "<br>Stock: " + Stock + "<br>Color: " + Color + "<br>Quantity: " + Quantity + "<br>Dimensions: " + Height + "x" + Width + "x" + Depth + "<br>Comments: " + Comments + "<br>Time: " + DateTime.Now;
+                })
+                {
+                    //message.Bcc.Add("support@printmybox.com");
+                    smtp.Send(message);
+                }
 
-                    var smtp = new SmtpClient
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                var fromSiteAddress = new MailAddress(SenderEmailId, "Print My Box");
+                var toCustomerAddress = new MailAddress(Email, Name);
+                string fromSitePassword = SenderEmailPassword;
+                subject = "PrintMyBox: Your Contact Form has submitted, Thankyou for your precious time ";
+                body = " <b>Form</b><br>Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Message: " + Message + "<br>Time: " + DateTime.Now;
+
+                var smtp1 = new SmtpClient
+                {
+                    Host = SenderEmailHost,
+                    Port = SenderEmailPort,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(fromSiteAddress.Address, fromSitePassword),
+                    Timeout = 20000
+                };
+                using (var message = new MailMessage(fromSiteAddress, toCustomerAddress)
+                {
+                    IsBodyHtml = true,
+                    Subject = subject,
+                    Body = body
+                })
+                {
+                    smtp1.Send(message);
+                }
+                TempData["FormSubmitMessage"] = "Request Submitted Successfully!";
+                FormSubmissionMessage_HomeController = "Request Submitted Successfully!";
+            }
+            else
+            {
+                TempData["FormSubmitMessage"] = "Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString();
+                FormSubmissionMessage_HomeController = "Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString();
+            }
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+        public static CaptchaResponse ValidateCaptcha(string response)
+        {
+            string secret = System.Web.Configuration.WebConfigurationManager.AppSettings["recaptchaPrivateKey"];
+            var client = new WebClient();
+            var jsonResult = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secret, response));
+            return JsonConvert.DeserializeObject<CaptchaResponse>(jsonResult.ToString());
+        }
+        [HttpPost, ValidateInput(false)]
+        public ActionResult QuoteRequest(FormCollection fc, HttpPostedFileBase File_input)/*string ProductName, string Name, string Email, string Phone, string Stock, string Color, string Quantity, string Height, string Width, string Depth, string File, string Comments*/
+        {
+            try
+            {
+                CaptchaResponse response = ValidateCaptcha(Request["g-recaptcha-response"]);
+                if (response.Success)
+                {
+                    string ProductName = fc["ProductName-input"];
+                    string Name = fc["Name-input"];
+                    string Email = fc["Email-input"];
+                    string Phone = fc["Phone-input"];
+                    string Stock = fc["Stock-input"];
+                    string Color = fc["Color-input"];
+                    string Quantity = fc["Quantity-input"];
+                    string Height = fc["Height-input"];
+                    string Width = fc["Width-input"];
+                    string Depth = fc["Depth-input"];
+                    string Comments = fc["Comments-input"];
+                    string ViewPath = fc["ViewPath"];
+                    HttpPostedFileBase AttachmentUserCopy = File_input;
+
+                    try
                     {
-                        Host = SenderEmailHost,
-                        Port = SenderEmailPort,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                        Timeout = 20000
-                    };
-
-                    using (var message = new MailMessage(fromAddress, toAddress)
-                    {
-                        IsBodyHtml = true,
-                        Subject = subject,
-                        Body = body
-                    })
-                    {
-
-                        if (File_input != null)
-
+                        PriceQuote QuoteObject = new PriceQuote();
+                        if (AttachmentUserCopy != null)
                         {
+                            string pic = System.IO.Path.GetFileName(AttachmentUserCopy.FileName);
+                            string path = System.IO.Path.Combine(
+                                                   Server.MapPath("~/UploadedProductImages"), pic);
+                            // file is uploaded
+                            AttachmentUserCopy.SaveAs(path);
 
-                            string fileName = Path.GetFileName(File_input.FileName);
-                            File_input.InputStream.Seek(0, SeekOrigin.Begin);
-                            message.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
-                            message.Bcc.Add(SenderEmailId);
+                            // save the image path path to the database or you can send image 
+                            // directly to database
+                            // in-case if you want to store byte[] ie. for DB
+                            using (MemoryStream ms = new MemoryStream())
+                            {
+                                AttachmentUserCopy.InputStream.CopyTo(ms);
+                                byte[] array = ms.GetBuffer();
+                            }
+                            QuoteObject.File = AttachmentUserCopy.FileName;
+
                         }
+                        QuoteObject.UserName = Name;
+                        QuoteObject.Email = Email;
+                        QuoteObject.PhoneNumber = Phone;
+                        QuoteObject.Quantity = Convert.ToInt32(Quantity);
+                        QuoteObject.Stock = Stock;
+                        QuoteObject.Color = Color;
+                        QuoteObject.Height = Height;
+                        QuoteObject.Width = Width;
+                        QuoteObject.Depth = Depth;
+                        QuoteObject.Comments = Comments;
+                        QuoteObject.SubmittedTime = DateTime.Now;
+                        QuoteObject.IsDeleted = false;
+                        QuoteObject.SeenTime = null;
+                        QuoteObject.Seen = false;
 
-                        smtp.Send(message);
+                        db.PriceQuotes.Add(QuoteObject);
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        infoMessage(ex.Message);
+                        writeErrorLog(ex);
                     }
 
 
-                    //return new FilePathResult(ViewPath, "text/html");
-                    var smtp1 = new SmtpClient
-                    {
-                        Host = SenderEmailHost,
-                        Port = SenderEmailPort,
-                        EnableSsl = true,
-                        DeliveryMethod = SmtpDeliveryMethod.Network,
-                        Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
-                        Timeout = 20000
-                    };
-
-                    using (var message1 = new MailMessage(SenderEmailId, SenderEmailId)
-                    {
-                        IsBodyHtml = true,
-                        Subject = subject,
-                        Body = body
-                    })
+                    try
                     {
 
-                        if (File_input != null)
+                        var fromAddress = new MailAddress(SenderEmailId, "Quote Request: " + Name);
+                        var toAddress = new MailAddress(Email, "Quote Request" + Name);
+                        string fromPassword = SenderEmailPassword;
+                        string subject = "Quote Request for Product " + ProductName;
+                        string body = "Name: " + Name + "<br>Phone: " + Phone + "<br>" + "Email: " + Email + "<br>" + "Product Details: " + ProductName + "<br>Stock: " + Stock + "<br>Color: " + Color + "<br>Quantity: " + Quantity + "<br>Dimensions: " + Height + "x" + Width + "x" + Depth + "<br>Comments: " + Comments + "<br>Time: " + DateTime.Now;
 
+                        var smtp = new SmtpClient
+                        {
+                            Host = SenderEmailHost,
+                            Port = SenderEmailPort,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                            Timeout = 20000
+                        };
+
+                        using (var message = new MailMessage(fromAddress, toAddress)
+                        {
+                            IsBodyHtml = true,
+                            Subject = subject,
+                            Body = body
+                        })
                         {
 
-                            string fileName = Path.GetFileName(File_input.FileName);
-                            File_input.InputStream.Seek(0, SeekOrigin.Begin);
-                            message1.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
+                            if (File_input != null)
 
+                            {
+
+                                string fileName = Path.GetFileName(File_input.FileName);
+                                File_input.InputStream.Seek(0, SeekOrigin.Begin);
+                                message.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
+                                message.Bcc.Add(SenderEmailId);
+                            }
+
+                            smtp.Send(message);
                         }
 
-                        smtp1.Send(message1);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    HomeController.infoMessage(ex.Message);
-                    HomeController.writeErrorLog(ex);
-                }
 
-                ViewBag.FormSubmitMessage = "Success";
-                TempData["FormSubmitMessage"] = "Request Successfully Submitted!";
-                return Redirect(Request.UrlReferrer.ToString());
+                        //return new FilePathResult(ViewPath, "text/html");
+                        var smtp1 = new SmtpClient
+                        {
+                            Host = SenderEmailHost,
+                            Port = SenderEmailPort,
+                            EnableSsl = true,
+                            DeliveryMethod = SmtpDeliveryMethod.Network,
+                            Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                            Timeout = 20000
+                        };
+
+                        using (var message1 = new MailMessage(SenderEmailId, SenderEmailId)
+                        {
+                            IsBodyHtml = true,
+                            Subject = subject,
+                            Body = body
+                        })
+                        {
+
+                            if (File_input != null)
+
+                            {
+
+                                string fileName = Path.GetFileName(File_input.FileName);
+                                File_input.InputStream.Seek(0, SeekOrigin.Begin);
+                                message1.Attachments.Add(new Attachment(File_input.InputStream, fileName, MediaTypeNames.Application.Octet));
+
+                            }
+
+                            smtp1.Send(message1);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        HomeController.infoMessage(ex.Message);
+                        HomeController.writeErrorLog(ex);
+                    }
+
+                    ViewBag.FormSubmitMessage = "Success";
+                    TempData["FormSubmitMessage"] = "Request Successfully Submitted!";
+                    FormSubmissionMessage_HomeController = "Request Successfully Submitted!";
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
+                else
+                {
+                    TempData["FormSubmitMessage"] = "Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString();
+                    FormSubmissionMessage_HomeController = "Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString();
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
             }
             catch (Exception ex)
             {

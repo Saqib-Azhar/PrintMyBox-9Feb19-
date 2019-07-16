@@ -569,21 +569,30 @@ namespace Practicing_OAuth.Controllers
             try
             {
 
-                var ProductId = Convert.ToInt32(fc["ProductId"]);
-                var Reviewer = fc["ReviewerName"];
-                var Rating = fc["Rating"];
-                var Review = fc["Review"];
-                var ReviewObj = new ProductsReview();
-                ReviewObj.ProductId = ProductId;
-                ReviewObj.Rating = Convert.ToInt32(Rating);
-                ReviewObj.Review = Review;
-                ReviewObj.ReviewerName = Reviewer;
-                ReviewObj.CreatedAt = DateTime.Now;
-                db.ProductsReviews.Add(ReviewObj);
-                db.SaveChanges();
-                int id = ProductId;
-                TempData["FormSubmitMessage"] = "Request Successfully Submitted!";
-                return Redirect(Request.UrlReferrer.ToString());
+                CaptchaResponse response = HomeController.ValidateCaptcha(Request["g-recaptcha-response"]);
+                if (response.Success)
+                {
+                    var ProductId = Convert.ToInt32(fc["ProductId"]);
+                    var Reviewer = fc["ReviewerName"];
+                    var Rating = fc["Rating"];
+                    var Review = fc["Review"];
+                    var ReviewObj = new ProductsReview();
+                    ReviewObj.ProductId = ProductId;
+                    ReviewObj.Rating = Convert.ToInt32(Rating);
+                    ReviewObj.Review = Review;
+                    ReviewObj.ReviewerName = Reviewer;
+                    ReviewObj.CreatedAt = DateTime.Now;
+                    db.ProductsReviews.Add(ReviewObj);
+                    db.SaveChanges();
+                    int id = ProductId;
+                    TempData["FormSubmitMessage"] = "Request Successfully Submitted!";
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
+                else
+                {
+                    TempData["FormSubmitMessage"] = "Error From Google ReCaptcha : " + response.ErrorMessage[0].ToString();
+                    return Redirect(Request.UrlReferrer.ToString());
+                }
             }
             catch (Exception ex)
             {
