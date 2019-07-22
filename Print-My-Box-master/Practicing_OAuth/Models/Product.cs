@@ -20,7 +20,7 @@ namespace Practicing_OAuth.Models
         {
             this.ProductsReviews = new HashSet<ProductsReview>();
         }
-
+    
         public int Id { get; set; }
         public string Name { get; set; }
         public Nullable<decimal> Price { get; set; }
@@ -39,7 +39,12 @@ namespace Practicing_OAuth.Models
         public string Product_Description { get; set; }
         [AllowHtml]
         public string Specifications { get; set; }
-
+        public string MetaTags { get; set; }
+        public string MetaDescription { get; set; }
+        public string CustomField_1 { get; set; }
+        public string CustomField_2 { get; set; }
+        public string CustomField_3 { get; set; }
+    
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductsReview> ProductsReviews { get; set; }

@@ -150,7 +150,7 @@ namespace Practicing_OAuth.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [ValidateInput(false)]
-        public ActionResult Create([Bind(Include = "Id,Name,Price,SlugURL,Description,IsEnabled,Image1,Image2,Image3,Image4,Image5,UploadedDate,CategoryId,Product_Description,Specifications")] Product product, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, HttpPostedFileBase Image5)
+        public ActionResult Create([Bind(Include = "Id,Name,Price,SlugURL,Description,IsEnabled,Image1,Image2,Image3,Image4,Image5,UploadedDate,CategoryId,Product_Description,Specifications,,MetaDescription,MetaTags")] Product product, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, HttpPostedFileBase Image5)
         {
             if (Image1 != null)
             {
@@ -286,7 +286,7 @@ namespace Practicing_OAuth.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Price,SlugURL,Description,IsEnabled,UploadedDate,CategoryId,Product_Description,Specifications")] Product product, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, HttpPostedFileBase Image5)
+        public ActionResult Edit([Bind(Include = "Id,Name,Price,SlugURL,Description,IsEnabled,UploadedDate,CategoryId,Product_Description,Specifications,MetaDescription,MetaTags")] Product product, HttpPostedFileBase Image1, HttpPostedFileBase Image2, HttpPostedFileBase Image3, HttpPostedFileBase Image4, HttpPostedFileBase Image5)
         {
             if (Image1 != null)
             {

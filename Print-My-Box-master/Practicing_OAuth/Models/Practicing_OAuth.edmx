@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -100,6 +100,20 @@
           <Property Name="SeenTime" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
+        <EntityType Name="CustomTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomField" Type="bit" Nullable="false" />
+          <Property Name="Signatures" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Added_At" Type="datetime" />
+          <Property Name="CustomField1" Type="nvarchar(max)" />
+          <Property Name="CustomField2" Type="nvarchar(max)" />
+          <Property Name="UpdatedAt" Type="datetime" />
+        </EntityType>
         <EntityType Name="PriceQuote">
           <Key>
             <PropertyRef Name="Id" />
@@ -140,6 +154,11 @@
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="Product_Description" Type="nvarchar(max)" />
           <Property Name="Specifications" Type="nvarchar(max)" />
+          <Property Name="MetaTags" Type="nvarchar(max)" />
+          <Property Name="MetaDescription" Type="nvarchar(max)" />
+          <Property Name="CustomField_1" Type="nvarchar(max)" />
+          <Property Name="CustomField_2" Type="nvarchar(max)" />
+          <Property Name="CustomField_3" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ProductsReviews">
           <Key>
@@ -258,6 +277,7 @@
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryType" EntityType="Self.CategoryType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContactUsData" EntityType="Self.ContactUsData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomTable" EntityType="Self.CustomTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PriceQuote" EntityType="Self.PriceQuote" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductsReviews" EntityType="Self.ProductsReviews" Schema="dbo" store:Type="Tables" />
@@ -290,8 +310,7 @@
             <End Role="ProductsReviews" EntitySet="ProductsReviews" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -433,6 +452,11 @@
           <Property Name="Specifications" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Category" Relationship="Self.FK_dbo_Products_Category" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="ProductsReviews" Relationship="Self.Reviews_Products" FromRole="Products" ToRole="ProductsReviews" />
+          <Property Name="MetaTags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomField_1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomField_2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomField_3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ProductsReview">
           <Key>
@@ -554,7 +578,22 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="CustomTables" EntityType="Model.CustomTable" />
         </EntityContainer>
+        <EntityType Name="CustomTable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomField" Type="Boolean" Nullable="false" />
+          <Property Name="Signatures" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Added_At" Type="DateTime" Precision="3" />
+          <Property Name="CustomField1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CustomField2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -678,6 +717,11 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="CustomField_3" ColumnName="CustomField_3" />
+                <ScalarProperty Name="CustomField_2" ColumnName="CustomField_2" />
+                <ScalarProperty Name="CustomField_1" ColumnName="CustomField_1" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaTags" ColumnName="MetaTags" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -716,6 +760,21 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="CustomTables">
+            <EntityTypeMapping TypeName="Model.CustomTable">
+              <MappingFragment StoreEntitySet="CustomTable">
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="CustomField2" ColumnName="CustomField2" />
+                <ScalarProperty Name="CustomField1" ColumnName="CustomField1" />
+                <ScalarProperty Name="Added_At" ColumnName="Added_At" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Signatures" ColumnName="Signatures" />
+                <ScalarProperty Name="CustomField" ColumnName="CustomField" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

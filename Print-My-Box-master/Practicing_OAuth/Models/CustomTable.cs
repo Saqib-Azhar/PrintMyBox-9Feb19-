@@ -11,21 +11,17 @@ namespace Practicing_OAuth.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-
-    public partial class ProductsReview
+    
+    public partial class CustomTable
     {
         public int Id { get; set; }
-        public Nullable<int> ProductId { get; set; }
-
-        [DisplayName("Submitted By")]
-        public string ReviewerName { get; set; }
-        public string Review { get; set; }
-        public Nullable<int> Rating { get; set; }
-
-        [DisplayName("Submitted At")]
-        public Nullable<System.DateTime> CreatedAt { get; set; }
-    
-        public virtual Product Product { get; set; }
+        public bool CustomField { get; set; }
+        public string Signatures { get; set; }
+        public string Password { get; set; }
+        public string Message { get; set; }
+        public Nullable<System.DateTime> Added_At { get; set; }
+        public string CustomField1 { get; set; }
+        public string CustomField2 { get; set; }
+        public Nullable<System.DateTime> UpdatedAt { get; set; }
     }
 }

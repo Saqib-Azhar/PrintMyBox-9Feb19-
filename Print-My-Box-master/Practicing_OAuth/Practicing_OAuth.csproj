@@ -287,6 +287,9 @@
     <Compile Include="Models\ContactUsData.cs">
       <DependentUpon>Practicing_OAuth.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomTable.cs">
+      <DependentUpon>Practicing_OAuth.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>Practicing_OAuth.tt</DependentUpon>
     </Compile>
@@ -1725,6 +1728,8 @@
     <Content Include="Views\ProductsReviews\_ViewStart.cshtml" />
     <Content Include="Views\Home\_JsonLdPartial.cshtml" />
     <Content Include="Views\Blog\Index.cshtml" />
+    <Content Include="Views\Home\WebsiteNotAvailable.cshtml" />
+    <Content Include="Views\Home\DeveloperAccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\AdminAssets\assets1\" />

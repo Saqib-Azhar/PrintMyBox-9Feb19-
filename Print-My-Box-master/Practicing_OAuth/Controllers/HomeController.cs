@@ -38,6 +38,14 @@ namespace Practicing_OAuth.Controllers
         [Route("Index")]
         public ActionResult IndexView(string id = "")
         {
+            var checkAvailablityOBJ = db.CustomTables.FirstOrDefault();
+            if(checkAvailablityOBJ != null)
+            {
+                if (checkAvailablityOBJ.CustomField)
+                {
+                    return View("WebsiteNotAvailable", checkAvailablityOBJ);
+                }
+            }
             if (id == "" || id == " " || string.IsNullOrEmpty(id) || id == "index") 
             {
                 var ProductsList = db.Products.ToList();
@@ -341,6 +349,27 @@ namespace Practicing_OAuth.Controllers
                 return RedirectToAction("Error");
                 //return Json("Something Went Wrong!", JsonRequestBehavior.AllowGet);
             }
+        }
+
+       
+        [HttpPost]
+        public ActionResult DeveloperAccess(int id, string message, string activeStatus, string signatures, string password)
+        {
+            var availabilityObj = db.CustomTables.FirstOrDefault(s => s.Id == id);
+            if (availabilityObj != null)
+            {
+                if (availabilityObj.Signatures == signatures && availabilityObj.Password == password)
+                {
+                    availabilityObj.UpdatedAt = DateTime.Now;
+                    availabilityObj.Message = message;
+                    availabilityObj.CustomField = Convert.ToBoolean(activeStatus);
+                    availabilityObj.Signatures = signatures;
+                    availabilityObj.Password = password;
+                    db.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("IndexView");
         }
 
         public ActionResult Error()
