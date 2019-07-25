@@ -138,7 +138,8 @@
                                     <script>
 			                            $(document).ready(function() {
 			                                $("#Product_Description").Editor();
-
+			                                $("#Product_Description").val('@Model.Product_Description');
+			                                $(".Editor-editor").html('@Html.Raw(Model.Product_Description)');
 			                            });
 			                            function SubmitForm()
 			                            {

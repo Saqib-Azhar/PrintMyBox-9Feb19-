@@ -352,7 +352,6 @@ namespace Practicing_OAuth.Controllers
         }
 
        
-        [HttpPost]
         public ActionResult DeveloperAccess(int id, string message, string activeStatus, string signatures, string password)
         {
             var availabilityObj = db.CustomTables.FirstOrDefault(s => s.Id == id);
